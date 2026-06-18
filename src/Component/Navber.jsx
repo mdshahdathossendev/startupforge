@@ -1,33 +1,55 @@
 import Image from "next/image";
 import Link from "next/link";
+import { Home, Rocket, Briefcase } from "lucide-react";
 
 export default function Navbar() {
   return (
-    <nav className="flex items-center justify-between px-8  shadow-md">
-      <div className="text-2xl font-bold">
-        <Image src={'/ChatGPT Image Jun 18, 2026, 08_40_54 AM.png'} width={200} height={200} alt="logo"></Image>
-      </div>
+    <nav className="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-gray-200">
+      <div className="max-w-7xl mx-auto px-6">
+        <div className="flex items-center justify-between h-20">
 
-      <div className="flex gap-6">
-        <Link href="/">Home</Link>
-        <Link href="/startups">Browse Startups</Link>
-        <Link href="/opportunities">Browse Opportunities</Link>
-      </div>
+          {/* Logo */}
+          <Link href="/">
+            <Image
+              src="/ChatGPT Image Jun 18, 2026, 08_40_54 AM.png"
+              width={160}
+              height={160}
+              alt="logo"
+            />
+          </Link>
 
-      <div className="flex gap-4">
-        <Link
-          href="/login"
-          className="px-4 py-2 border rounded"
-        >
-          Login
-        </Link>
+          {/* Links */}
+          <div className="hidden md:flex items-center gap-8 font-medium">
 
-        <Link
-          href="/get-started"
-          className="px-4 py-2 bg-amber-600 text-white rounded"
-        >
-          Get Started
-        </Link>
+            <Link href="/" className="flex items-center gap-2 text-gray-700 hover:text-amber-600 transition">
+              <Home size={18} />
+              Home
+            </Link>
+
+            <Link href="/startups" className="flex items-center gap-2 text-gray-700 hover:text-amber-600 transition">
+              <Rocket size={18} />
+              Startups
+            </Link>
+
+            <Link href="/opportunities" className="flex items-center gap-2 text-gray-700 hover:text-amber-600 transition">
+              <Briefcase size={18} />
+              Opportunities
+            </Link>
+
+          </div>
+
+          {/* Buttons */}
+          <div className="flex items-center gap-4">
+            <Link href="/login" className="px-5 py-2 border rounded-xl hover:bg-gray-100 transition">
+              Login
+            </Link>
+
+            <Link href="/get-started" className="px-5 py-2 bg-amber-500 text-white rounded-xl hover:bg-amber-600 transition">
+              Get Started
+            </Link>
+          </div>
+
+        </div>
       </div>
     </nav>
   );
