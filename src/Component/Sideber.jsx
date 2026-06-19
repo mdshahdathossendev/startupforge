@@ -67,9 +67,10 @@ export default function Sidebar() {
         {role === "Founder" && (
           <>
             <Link
-              href="/dashboard/founder/projects"
+              href="/dashboard/founder/my-startup
+"
               className={`flex items-center gap-3 px-4 py-3 rounded-xl transition ${
-                isActive("/dashboard/founder/projects")
+                isActive("/dashboard/founder/my-startup")
                   ? "bg-amber-500 text-white shadow-lg"
                   : "text-gray-700 hover:bg-gray-100"
               }`}
