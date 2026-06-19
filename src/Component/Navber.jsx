@@ -1,8 +1,17 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Home, Rocket, Briefcase } from "lucide-react";
+import { auth } from "@/lib/auth";
+import { headers } from "next/headers";
+import Popber from "./Popber";
 
-export default function Navbar() {
+export default async function Navbar() {
+    const session = await auth.api.getSession({
+    headers: await headers(),
+  });
+
+  console.log(session);
+
   return (
     <nav className="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-gray-200">
       <div className="max-w-7xl mx-auto px-6">
@@ -39,15 +48,28 @@ export default function Navbar() {
           </div>
 
           {/* Buttons */}
+          {session ? (
+          <div className="">
+          <Popber></Popber>
+          </div>
+        ) : (
+          /* ❌ IF NOT LOGGED IN */
           <div className="flex items-center gap-4">
-            <Link href="/login" className="px-5 py-2 border rounded-xl hover:bg-gray-100 transition">
+            <Link
+              href="/login"
+              className="px-5 py-2 border rounded-xl hover:bg-gray-100 transition"
+            >
               Login
             </Link>
 
-            <Link href="/get-started" className="px-5 py-2 bg-amber-500 text-white rounded-xl hover:bg-amber-600 transition">
+            <Link
+              href="/sinin"
+              className="px-5 py-2 bg-amber-500 text-white rounded-xl hover:bg-amber-600 transition"
+            >
               Get Started
             </Link>
           </div>
+        )}
 
         </div>
       </div>
