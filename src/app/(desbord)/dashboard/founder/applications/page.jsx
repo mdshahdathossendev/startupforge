@@ -15,7 +15,7 @@ const page = async() => {
     console.log(data)
     return (
         <div>
-            <MangeApplication data = {data}></MangeApplication>
+            <MangeApplication data={data}></MangeApplication>
         </div>
     );
 };

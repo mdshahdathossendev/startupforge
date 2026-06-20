@@ -78,3 +78,17 @@ export const deleteStartup = async (email) => {
 
   return await res.json();
 };
+export const updateApplication = async (id, data) => {
+  const res = await fetch(
+    `http://localhost:8080/application/query/${id}`,
+    {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    }
+  );
+
+  return await res.json();
+};
