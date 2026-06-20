@@ -2,6 +2,7 @@
 import React from 'react';
 import { Calendar} from "lucide-react";
 import { authClient } from '@/lib/auth-client';
+import { createApplication } from '@/lib/action';
 const OporsontiyDetles = ({job}) => {
     const { data: session } = authClient.useSession();
       const email = session?.user?.email;
@@ -14,14 +15,15 @@ const OporsontiyDetles = ({job}) => {
      const formData = new FormData(e.currentTarget);
 
     const userData = {
-      opportunity_id: job._id,
+      opportunity_id: job.startup_id,
+      job_title: job.role_title,
       motivation: formData.get("motivation"),
       portfolio_link: formData.get("portfolio_link"),
       applicant_email: email,
       status: 'Pending',
       applied_at: new Date()
     };
-
+    createApplication(userData);
   console.log(userData);
 };
     return (

@@ -14,3 +14,9 @@ export const getOpportunities = async () => {
   const res = await fetch(`http://localhost:8080/opportunities`) 
   return res.json();
 };
+export const getApplicationsByOpportunity = async (opportunity_id) => {
+  const res = await fetch(
+    `http://localhost:8080/application/${opportunity_id}`
+  );
+  return res.json();
+};
