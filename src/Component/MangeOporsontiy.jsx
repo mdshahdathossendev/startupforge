@@ -1,7 +1,18 @@
+'use client'
 import { Button, Table } from '@heroui/react';
+import { Delete, Edit, View } from 'lucide-react';
 import React from 'react';
+import OporsontiyEdit from './OporsontiyEdit';
+import { deleteOpportunity } from '@/lib/action';
 
 const MangeOporsontiy = ({data}) => {
+  const handleDelete = async (id) => {
+  const result = await deleteOpportunity(id);
+
+  if (result.deletedCount > 0) {
+    alert("Deleted Successfully");
+  }
+};
     return (
         <div>
              <Table className='rounded-sm'>
@@ -18,10 +29,10 @@ const MangeOporsontiy = ({data}) => {
               <Table.Row key={items._id}>
               <Table.Cell>{items.role_title}</Table.Cell>
               <Table.Cell>{items.date}</Table.Cell>
-              <Table.Cell className={'text-center'}>
-                <Button>Edit</Button>
-                <Button>View</Button>
-                <Button>Delete</Button>
+              <Table.Cell className={'text-center flex gap-2 justify-center'}>
+               <OporsontiyEdit id = {items._id}></OporsontiyEdit>
+                <Button  className={'rounded-sm bg-pink-500'}><View></View> View</Button>
+                <Button onClick={()=> handleDelete(items._id)}  className={'rounded-sm bg-red-600'}><Delete></Delete>  Delete</Button>
               </Table.Cell>
             </Table.Row>
             )

@@ -1,7 +1,16 @@
 import { Pencil, Trash2 } from "lucide-react";
 import { FounderEditFrom } from "./FundeerEditFrom";
+import { deleteStartup } from "@/lib/action";
 
 const Startup = ({data }) => {
+  const handleDelete = async (email) => {
+    console.log(email)
+    const result = await deleteStartup(email);
+  
+    if (result.deletedCount > 0) {
+      alert("Deleted Successfully");
+    }
+  };
     console.log(data)
   return (
     <div>
@@ -52,7 +61,7 @@ const Startup = ({data }) => {
             <div className="flex md:flex-col gap-3 ml-auto">
              <FounderEditFrom></FounderEditFrom>
 
-              <button className="flex items-center gap-2 px-4 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600">
+              <button onClick={()=>handleDelete(data.founder_email)} className="flex items-center gap-2 px-4 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600">
                 <Trash2 size={18} />
                 Delete
               </button>
