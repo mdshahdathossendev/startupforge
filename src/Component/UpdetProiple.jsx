@@ -4,9 +4,11 @@ import { updateProfile } from "@/lib/action";
 import { authClient } from "@/lib/auth-client";
 import {Button, Input, Label, Modal, Surface, TextField} from "@heroui/react";
 import { Pencil } from "lucide-react";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 
 export function UpdetProfileset() {
+    const router = useRouter()
     const { data: session } = authClient.useSession();
       const id = session?.user?.id;
          const onSubmit = async (e) => {
@@ -23,6 +25,7 @@ export function UpdetProfileset() {
             };
           console.log(userDataFrom)
           updateProfile(id, userDataFrom)
+            router.refresh();
         }
       const [imageUrl, setImageUrl] = useState("");
       const [loading, setLoading] = useState(false);

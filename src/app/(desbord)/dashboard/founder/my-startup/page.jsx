@@ -34,6 +34,7 @@ useEffect(() => {
       stats: "Pending",
     };
     createOpportunity(userData)
+     window.location.reload();
     console.log(userData)
 }
      const [imageUrl, setImageUrl] = useState("");

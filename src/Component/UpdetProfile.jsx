@@ -13,7 +13,7 @@ const ProfileSection = ({ userData }) => {
       <div className="bg-white rounded-3xl shadow-lg overflow-hidden">
 
         {/* Cover */}
-        <div className="h-40 bg-gradient-to-r from-amber-600 to-orange-600"></div>
+        <div className="h-40 bg-gradient-to-r from-indigo-600 via-blue-600 to-cyan-500 p-8"></div>
 
         {/* Profile Header */}
         <div className="px-6 pb-6">

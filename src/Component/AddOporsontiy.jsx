@@ -1,9 +1,9 @@
 'use client'
 import { createStartups } from '@/lib/action';
+import { useRouter } from 'next/navigation';
 import React from 'react';
 
 const AddOporsontiy = ({data}) => {
-      console.log(data)
      const onSubmit = async (e) => {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
@@ -18,7 +18,8 @@ const AddOporsontiy = ({data}) => {
       date: formData.get("deadline"),
     };
     createStartups(userData)
-}
+   window.location.reload()
+} 
     return (
          <div className="max-w-3xl mx-auto bg-white p-8 rounded-2xl shadow-md">
       <h2 className="text-3xl font-bold mb-6">

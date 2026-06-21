@@ -4,6 +4,9 @@ import { Table } from '@heroui/react';
 
 
 const MangeApplication = ({data}) => {
+  const updetApplctios = ()=>{
+    
+  }
     return (
         <Table>
       <Table.ScrollContainer>

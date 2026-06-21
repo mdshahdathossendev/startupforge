@@ -55,7 +55,7 @@ export default function Sidebar() {
   href={getOverviewRoute(role)}
   className={`flex items-center gap-3 px-4 py-3 rounded-xl transition ${
     isActive(getOverviewRoute(role))
-      ? "bg-amber-500 text-white shadow-lg"
+      ? "bg-blue-800 text-white shadow-lg"
       : "text-gray-700 hover:bg-gray-100"
   }`}
 >
@@ -71,7 +71,7 @@ export default function Sidebar() {
 "
               className={`flex items-center gap-3 px-4 py-3 rounded-xl transition ${
                 isActive("/dashboard/founder/my-startup")
-                  ? "bg-amber-500 text-white shadow-lg"
+                  ? "bg-blue-800 text-white shadow-lg"
                   : "text-gray-700 hover:bg-gray-100"
               }`}
             >
@@ -83,7 +83,7 @@ export default function Sidebar() {
               href="/dashboard/founder/add-opportunity"
               className={`flex items-center gap-3 px-4 py-3 rounded-xl transition ${
                 isActive("/dashboard/founder/add-opportunity")
-                  ? "bg-amber-500 text-white shadow-lg"
+                  ? "bg-blue-800 text-white shadow-lg"
                   : "text-gray-700 hover:bg-gray-100"
               }`}
             >
@@ -95,7 +95,7 @@ export default function Sidebar() {
               href="/dashboard/founder/manage-opportunities"
               className={`flex items-center gap-3 px-4 py-3 rounded-xl transition ${
                 isActive("/dashboard/founder/manage-opportunities")
-                  ? "bg-amber-500 text-white shadow-lg"
+                  ? "bg-blue-800 text-white shadow-lg"
                   : "text-gray-700 hover:bg-gray-100"
               }`}
             >
@@ -107,7 +107,7 @@ export default function Sidebar() {
               href="/dashboard/founder/applications"
               className={`flex items-center gap-3 px-4 py-3 rounded-xl transition ${
                 isActive("/dashboard/founder/applications")
-                  ? "bg-amber-500 text-white shadow-lg"
+                  ? "bg-blue-800 text-white shadow-lg"
                   : "text-gray-700 hover:bg-gray-100"
               }`}
             >
@@ -124,7 +124,7 @@ export default function Sidebar() {
               href="/dashboard/collaborator/my-applications"
               className={`flex items-center gap-3 px-4 py-3 rounded-xl transition ${
                 isActive("/dashboard/collaborator/my-applications")
-                  ? "bg-amber-500 text-white shadow-lg"
+                  ? "bg-blue-800 text-white shadow-lg"
                   : "text-gray-700 hover:bg-gray-100"
               }`}
             >
@@ -136,7 +136,7 @@ export default function Sidebar() {
               href="/dashboard/collaborator/profile"
               className={`flex items-center gap-3 px-4 py-3 rounded-xl transition ${
                 isActive("/dashboard/collaborator/profile")
-                  ? "bg-amber-500 text-white shadow-lg"
+                  ? "bg-blue-800 text-white shadow-lg"
                   : "text-gray-700 hover:bg-gray-100"
               }`}
             >
@@ -153,7 +153,7 @@ export default function Sidebar() {
               href="/dashboard/admin/users"
               className={`flex items-center gap-3 px-4 py-3 rounded-xl transition ${
                 isActive("/dashboard/admin/users")
-                  ? "bg-amber-500 text-white shadow-lg"
+                  ? "bg-blue-800 text-white shadow-lg"
                   : "text-gray-700 hover:bg-gray-100"
               }`}
             >
@@ -165,7 +165,7 @@ export default function Sidebar() {
               href="/dashboard/admin/startups"
               className={`flex items-center gap-3 px-4 py-3 rounded-xl transition ${
                 isActive("/dashboard/admin/startups")
-                  ? "bg-amber-500 text-white shadow-lg"
+                  ? "bg-blue-800 text-white shadow-lg"
                   : "text-gray-700 hover:bg-gray-100"
               }`}
             >
@@ -177,7 +177,7 @@ export default function Sidebar() {
               href="/dashboard/admin/transactions"
               className={`flex items-center gap-3 px-4 py-3 rounded-xl transition ${
                 isActive("/dashboard/admin/transactions")
-                  ? "bg-amber-500 text-white shadow-lg"
+                  ? "bg-blue-800 text-white shadow-lg"
                   : "text-gray-700 hover:bg-gray-100"
               }`}
             >

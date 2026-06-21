@@ -8,6 +8,7 @@ const Startup = ({data }) => {
     const result = await deleteStartup(email);
   
     if (result.deletedCount > 0) {
+      window.location.reload();
       alert("Deleted Successfully");
     }
   };
