@@ -107,11 +107,11 @@ export function UpdetProfileset() {
                     <Input placeholder="Enter your message" />
                   </TextField>
                   <TextField className="w-full" name="bio" variant="secondary">
-                    <Label>Bio</Label>
+                    <Label>Add Bio</Label>
                     <Input placeholder="Enter your message" />
                   </TextField>
                   <TextField className="w-full" name="skill" variant="secondary">
-                    <Label>Skill</Label>
+                    <Label>Add Skill</Label>
                     <Input placeholder="Enter your message" />
                   </TextField>
                   <Modal.Footer>

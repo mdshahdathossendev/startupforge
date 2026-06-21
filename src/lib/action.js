@@ -103,3 +103,14 @@ export const updateProfile = async (id, data) => {
 
   return res.json();
 };
+export const updateStartupData = async (id, data) => {
+  const res = await fetch(`http://localhost:8080/startups/query/${id}`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({stats: data}),
+  });
+
+  return res.json();
+};

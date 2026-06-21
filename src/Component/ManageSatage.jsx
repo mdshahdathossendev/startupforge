@@ -1,3 +1,5 @@
+'use client'
+import { updateStartupData } from '@/lib/action';
 import { Table } from '@heroui/react';
 import Image from 'next/image';
 import React from 'react';
@@ -8,8 +10,7 @@ const ManageSatage = ({data}) => {
               <Table.ScrollContainer>
                 <Table.Content aria-label="Team members" className="min-w-[600px]">
                   <Table.Header>
-                    <Table.Column isRowHeader>Logo</Table.Column>
-                    <Table.Column >Job Title</Table.Column>
+                    <Table.Column isRowHeader>Job Title</Table.Column>
                     <Table.Column>Industry</Table.Column>
                     <Table.Column>Status</Table.Column>
                     <Table.Column>Action</Table.Column>
@@ -18,7 +19,7 @@ const ManageSatage = ({data}) => {
                    {
                     data.map(items => 
                          <Table.Row key={items._id}>
-                      <Table.Cell><Image src={items.logo} alt='logo' width={100} height={100}></Image></Table.Cell>
+                
                       <Table.Cell>{items.startup_name}</Table.Cell>
                       <Table.Cell>{items.industry}</Table.Cell>
                      <Table.Cell>
@@ -39,14 +40,14 @@ const ManageSatage = ({data}) => {
                      <Table.Cell>
           <div className="flex gap-2">
             <button
-            // onClick={()=> updateApplication(items._id, "Accepted")}
+            onClick={()=> updateStartupData(items._id, "Approved")}
               className="px-3 py-1 bg-green-500 text-white rounded-md hover:bg-green-600"
             >
               Accept
             </button>
         
             <button
-            //  onClick={()=> updateApplication(items._id, "Rejected")}
+             onClick={()=> updateStartupData(items._id, "Rejected")}
               className="px-3 py-1 bg-red-500 text-white rounded-md hover:bg-red-600"
             >
               Reject
