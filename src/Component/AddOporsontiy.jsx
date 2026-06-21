@@ -3,12 +3,14 @@ import { createStartups } from '@/lib/action';
 import React from 'react';
 
 const AddOporsontiy = ({data}) => {
+      console.log(data)
      const onSubmit = async (e) => {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
 
     const userData = {
       startup_id: data._id,
+      startup_name: data.startup_name,
       role_title: formData.get("role_title"),
       required_skills: formData.get("required_skills"),
       work_type: formData.get("work_type"),

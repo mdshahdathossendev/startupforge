@@ -2,8 +2,8 @@
 import { updateApplication } from '@/lib/action';
 import { Table } from '@heroui/react';
 
+
 const MangeApplication = ({data}) => {
-    
     return (
         <Table>
       <Table.ScrollContainer>
@@ -38,14 +38,14 @@ const MangeApplication = ({data}) => {
              <Table.Cell>
   <div className="flex gap-2">
     <button
-    // onClick={updateApplication(items._id, "Active")}
+    onClick={()=> updateApplication(items._id, "Accepted")}
       className="px-3 py-1 bg-green-500 text-white rounded-md hover:bg-green-600"
     >
       Accept
     </button>
 
     <button
-    //  onClick={updateApplication(items._id, "Reject")}
+     onClick={()=> updateApplication(items._id, "Rejected")}
       className="px-3 py-1 bg-red-500 text-white rounded-md hover:bg-red-600"
     >
       Reject

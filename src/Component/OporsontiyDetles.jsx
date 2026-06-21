@@ -6,6 +6,8 @@ import { createApplication } from '@/lib/action';
 const OporsontiyDetles = ({job}) => {
     const { data: session } = authClient.useSession();
       const email = session?.user?.email;
+      const id = session?.user?.id;
+      console.log(session)
     const handleApply = (e) => {
     e.preventDefault();
      if (session?.user?.role !== "Collaborator") {
@@ -21,6 +23,8 @@ const OporsontiyDetles = ({job}) => {
       portfolio_link: formData.get("portfolio_link"),
       applicant_email: email,
       status: 'Pending',
+      applicant_id: id,
+      startup_name: job.startup_name,
       applied_at: new Date()
     };
     createApplication(userData);

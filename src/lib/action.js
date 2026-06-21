@@ -86,9 +86,20 @@ export const updateApplication = async (id, data) => {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(data),
+      body: JSON.stringify({status: data}),
     }
   );
 
-  return await res.json();
+  return res.json();
+};
+export const updateProfile = async (id, data) => {
+  const res = await fetch(`http://localhost:8080/user/${id}`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(data),
+  });
+
+  return res.json();
 };
