@@ -36,3 +36,9 @@ export const getUser = async (session_id) => {
   );
   return res.json();
 };
+export const getUserData = async () => {
+  const res = await fetch(
+    `http://localhost:8080/user`
+  );
+  return res.json();
+};

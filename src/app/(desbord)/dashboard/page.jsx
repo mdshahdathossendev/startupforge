@@ -20,7 +20,7 @@ export default async function DashboardPage() {
   const routes = {
     Founder: "/dashboard/founder/overview",
     Collaborator: "/dashboard/collaborator/overview",
-    Admin: "/dashboard/admin/overview",
+    admin: "/dashboard/admin/overview",
   };
 
   redirect(routes[role] || "/login");

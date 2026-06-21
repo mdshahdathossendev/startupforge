@@ -1,9 +1,14 @@
+
+import { MangeUser } from '@/Component/MangeUser';
+import { getUserData } from '@/lib/data';
 import React from 'react';
 
-const page = () => {
+const page = async() => {
+   const users = await getUserData()
+    
     return (
         <div>
-            Ufkfjdkf
+          <MangeUser users={users}></MangeUser>
         </div>
     );
 };

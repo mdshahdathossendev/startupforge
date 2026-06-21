@@ -22,7 +22,7 @@ export default function Sidebar() {
   const getOverviewRoute = (role) => {
   if (role === "Founder") return "/dashboard/founder/overview";
   if (role === "Collaborator") return "/dashboard/collaborator/overview";
-  if (role === "Admin") return "/dashboard/admin/overview";
+  if (role === "admin") return "/dashboard/admin/overview";
   return "/dashboard/overview";
 };
    const handellogOut = async() => {
@@ -147,7 +147,7 @@ export default function Sidebar() {
         )}
 
         {/* ADMIN */}
-        {role === "Admin" && (
+        {role === "admin" && (
           <>
             <Link
               href="/dashboard/admin/users"

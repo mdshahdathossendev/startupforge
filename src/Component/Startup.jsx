@@ -1,6 +1,7 @@
 import { Pencil, Trash2 } from "lucide-react";
 import { FounderEditFrom } from "./FundeerEditFrom";
 import { deleteStartup } from "@/lib/action";
+import Image from "next/image";
 
 const Startup = ({data }) => {
   const handleDelete = async (email) => {
@@ -22,11 +23,13 @@ const Startup = ({data }) => {
           <div className="flex flex-col md:flex-row gap-6 items-start">
             {/* Logo */}
             <div className="flex justify-center">
-              <img
-                src={data.logo}
-                alt={data.startup_name}
-                className="w-40 h-40 rounded-xl object-cover border"
-              />
+              <Image
+  src={data.logo || "/placeholder.png"}
+  alt={data.startup_name}
+  width={1000}
+  height={1000}
+  className="w-40 h-40 rounded-xl object-cover border"
+/>
             </div>
 
             {/* Details */}

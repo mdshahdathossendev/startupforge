@@ -27,6 +27,11 @@ export const auth = betterAuth({
       required: false,
       defaultValue: "Free",
     },
+    status: {
+      type: "string",
+      required: false,
+      defaultValue: "Unblock",
+    },
   },
 },
 });

@@ -2,6 +2,7 @@
 import { authClient } from '@/lib/auth-client';
 import { Button, Popover } from '@heroui/react';
 import { LayoutDashboard, LogOutIcon } from 'lucide-react';
+import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import React from 'react';
@@ -27,8 +28,10 @@ const Popber = () => {
          <div className="flex items-center justify-between p-4">
   
   <div className="relative">
-    <img
-      src={session?.user?.image}
+    <Image 
+      height={200}
+      width={200}
+      src={session?.user?.image || '/dfeult.page'}
       alt="Profile"
       className="w-12 h-12 rounded-full border-4 border-orange-500 object-cover"
     />
