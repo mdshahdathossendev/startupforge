@@ -1,21 +1,29 @@
 'use client'
+import { updateProfile } from "@/lib/action";
 import {Chip, Table} from "@heroui/react";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 
 export function MangeUser({users}) {
-  const hadelRoleCnage = (e) => {
-  const userData = {
-    role: e.target.value,
-  };
+  const router = useRouter()
+  const hadelRoleCnage = (e, id) => {
+  const role = e.target.value;
 
-  console.log(userData);
+  const userData = {
+    role,
+  };
+  updateProfile(id, userData)
+  router.refresh()
 };
-  const hadelSatesCnage = (e) => {
-  const userData = {
-    status: e.target.value,
-  };
+  const hadelSatesCnage = (e, id) => {
+ const status = e.target.value;
 
-  console.log(userData);
+  const userData = {
+    status,
+  };
+  console.log(userData)
+  updateProfile(id, userData)
+   router.refresh()
 };
   console.log(users)
   return (
@@ -49,28 +57,50 @@ export function MangeUser({users}) {
       </div>
     </div>
               </Table.Cell>
-              <Table.Cell>{item.role}</Table.Cell>
-              <Table.Cell>{item.status}</Table.Cell>
-             <Table.Cell>
+              <Table.Cell className={'text-center'}>
+  <span
+    className={`px-3 py-1 rounded-full text-sm font-medium ${
+      item.role === "admin"
+        ? "bg-red-100 text-red-600"
+        : item.role === "Founder"
+        ? "bg-green-100 text-green-600"
+        : "bg-blue-100 text-blue-600"
+    }`}
+  >
+    {item.role}
+  </span>
+</Table.Cell>
+             <Table.Cell className={'text-center'}>
+  <span
+    className={`px-3 py-1 rounded-full text-sm font-medium ${
+      item.status === "Block"
+        ? "bg-red-100 text-red-600"
+        : "bg-blue-100 text-blue-600"
+    }`}
+  >
+    {item.status}
+  </span>
+</Table.Cell>
+             <Table.Cell className={'text-center'}>
   <select
     name="roleset"
-    onChange={hadelRoleCnage}
+    onChange={(e) => hadelRoleCnage(e, item._id)}
     className="w-full px-4 py-2 border rounded-xl bg-white shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
     defaultValue={item.role}
   >
     <option value="Collaborator">Collaborator</option>
-    <option value="Funder">Funder</option>
-    <option value="Admin">Admin</option>
+    <option value="Founder">Funder</option>
+    <option value="admin">Admin</option>
   </select>
 </Table.Cell>
-              <Table.Cell><select
-    name="roleset"
-    onChange={hadelSatesCnage}
+              <Table.Cell className={'text-center'}><select
+    name="statusset"
+    onChange={(e)=> hadelSatesCnage(e, item._id)}
     className="w-full px-4 py-2 border rounded-xl bg-white shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
-    defaultValue={item.role}
+    defaultValue={item.status}
   >
-    <option value="Collaborator">Unblock</option>
-    <option value="Funder">Block</option>
+    <option value="Unblock">Unblock</option>
+    <option value="Block">Block</option>
     
   </select></Table.Cell>
             </Table.Row>

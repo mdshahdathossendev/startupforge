@@ -113,3 +113,13 @@ export const updateStartupData = async (id, data) => {
 
   return res.json();
 };
+export const deleteStartupData = async (id) => {
+  const res = await fetch(
+    `http://localhost:8080/startups/query/${id}`,
+    {
+      method: "DELETE",
+    }
+  );
+
+  return res.json();
+};
