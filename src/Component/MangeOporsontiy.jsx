@@ -1,20 +1,32 @@
 'use client'
 import { Button, Table } from '@heroui/react';
 import { Delete, Edit, View } from 'lucide-react';
-import React from 'react';
+import React, { useState } from 'react';
 import OporsontiyEdit from './OporsontiyEdit';
 import { deleteOpportunity } from '@/lib/action';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
+import DeleteToast from '@/lib/delettos';
 
 const MangeOporsontiy = ({data}) => {
+  const [showDeleteToast, setShowDeleteToast] = useState(false);
+  const router = useRouter()
   const handleDelete = async (id) => {
   const result = await deleteOpportunity(id);
-
-  if (result.deletedCount > 0) {
-    alert("Deleted Successfully");
-  }
+  setShowDeleteToast(true)
+  setTimeout(() => {
+    setShowDeleteToast(false);
+  }, 3000);
+  router.refresh()
 };
     return (
+       <>
+       {showDeleteToast && (
+  <DeleteToast
+    message="Your item Delete Sucessfull"
+    onCancel={() => setShowDeleteToast(false)}
+  />
+)}
         <div>
              <Table className='rounded-sm'>
       <Table.ScrollContainer >
@@ -51,6 +63,7 @@ const MangeOporsontiy = ({data}) => {
       </Table.ScrollContainer>
     </Table>
         </div>
+       </>
     );
 };
 

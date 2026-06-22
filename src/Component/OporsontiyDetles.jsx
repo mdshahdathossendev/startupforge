@@ -3,13 +3,24 @@ import React from 'react';
 import { Calendar} from "lucide-react";
 import { authClient } from '@/lib/auth-client';
 import { createApplication } from '@/lib/action';
-const OporsontiyDetles = ({job}) => {
+import { useRouter } from 'next/navigation';
+const OporsontiyDetles = ({job, data}) => {
+  const router = useRouter()
     const { data: session } = authClient.useSession();
       const email = session?.user?.email;
       const id = session?.user?.id;
-      console.log(session)
+     const planLimits = {
+      Free : 3,
+      Pro: 15
+     }
+     
     const handleApply = (e) => {
+     
     e.preventDefault();
+     const limit = planLimits[session?.user?.plan]
+     if(data.length >= limit){
+      router.push('/payment')
+     }
      if (session?.user?.role !== "Collaborator") {
     alert("Only Collaborators can apply for opportunities.");
     return;
