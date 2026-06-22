@@ -53,7 +53,7 @@ export default async function Navbar() {
           <Popber></Popber>
           </div>
         ) : (
-          /* ❌ IF NOT LOGGED IN */
+
           <div className="flex items-center gap-4">
             <Link
               href="/login"

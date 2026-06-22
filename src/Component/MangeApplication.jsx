@@ -1,12 +1,11 @@
 'use client'
 import { updateApplication } from '@/lib/action';
 import { Table } from '@heroui/react';
+import { useRouter } from 'next/navigation';
 
 
 const MangeApplication = ({data}) => {
-  const updetApplctios = ()=>{
-    
-  }
+  const router = useRouter()
     return (
         <Table>
       <Table.ScrollContainer>
@@ -41,14 +40,17 @@ const MangeApplication = ({data}) => {
              <Table.Cell>
   <div className="flex gap-2">
     <button
-    onClick={()=> updateApplication(items._id, "Accepted")}
+    onClick={async () => {
+  await updateApplication(items._id, "Accepted");
+  router.refresh();
+}}
       className="px-3 py-1 bg-green-500 text-white rounded-md hover:bg-green-600"
     >
       Accept
     </button>
 
     <button
-     onClick={()=> updateApplication(items._id, "Rejected")}
+     onClick={()=> {updateApplication(items._id, "Rejected");router.refresh();}}
       className="px-3 py-1 bg-red-500 text-white rounded-md hover:bg-red-600"
     >
       Reject

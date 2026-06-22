@@ -4,6 +4,7 @@ import Startup from "@/Component/Startup";
 import { createOpportunity } from "@/lib/action";
 import { authClient } from "@/lib/auth-client";
 import { getDashboardStats } from "@/lib/data";
+import Image from "next/image";
 import { use, useEffect, useState } from "react";
 
 export default function StartupForm() {
@@ -35,7 +36,6 @@ useEffect(() => {
     };
     createOpportunity(userData)
      window.location.reload();
-    console.log(userData)
 }
      const [imageUrl, setImageUrl] = useState("");
   const [loading, setLoading] = useState(false);
@@ -105,7 +105,8 @@ useEffect(() => {
       {loading && <p>Uploading...</p>}
 
       {imageUrl && (
-        <img
+        <Image width={200}
+        height={200}
           src={imageUrl}
           alt="Uploaded"
           className="w-32 h-32 object-cover rounded-lg mt-4"
@@ -159,7 +160,7 @@ useEffect(() => {
           {/* Submit Button */}
           <button
             type="submit"
-            className="w-full bg-amber-500 text-white py-3 rounded-xl font-semibold hover:bg-amber-600 transition"
+            className="w-full bg-blue-800 text-white py-3 rounded-xl font-semibold hover:bg-amber-600 transition"
           >
             Create Startup
           </button>

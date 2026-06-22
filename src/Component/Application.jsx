@@ -6,11 +6,11 @@ const Application = ({data}) => {
           <Table variant="secondary">
       <Table.ScrollContainer>
         <Table.Content aria-label="Team members" className="min-w-[600px]">
-          <Table.Header className={'rounded-sm bg-amber-500'}>
-            <Table.Column className={'rounded-sm bg-amber-500 text-white'} isRowHeader>Opportunity Name</Table.Column>
-            <Table.Column className={'rounded-sm bg-amber-500 text-white'}>Startup Name</Table.Column>
-            <Table.Column className={'rounded-sm bg-amber-500 text-white'}>Applied Date</Table.Column>
-            <Table.Column className={'rounded-sm bg-amber-500 text-white'}>Status</Table.Column>
+          <Table.Header className={'rounded-sm bg-blue-700'}>
+            <Table.Column className={'rounded-sm bg-blue-700 text-white'} isRowHeader>Opportunity Name</Table.Column>
+            <Table.Column className={'rounded-sm bg-blue-700 text-white'}>Startup Name</Table.Column>
+            <Table.Column className={'rounded-sm bg-blue-700 text-white'}>Applied Date</Table.Column>
+            <Table.Column className={'rounded-sm bg-blue-700 text-white'}>Status</Table.Column>
           </Table.Header>
           <Table.Body>
             {

@@ -1,4 +1,5 @@
 import MangeApplication from '@/Component/MangeApplication';
+import NoApplicationsForFounder from '@/Component/NoFunderApplicaton';
 import { auth } from '@/lib/auth';
 import { getApplicationsByOpportunity, getDashboardStats} from '@/lib/data';
 import { headers } from 'next/headers';
@@ -12,10 +13,12 @@ const page = async() => {
     const opsoData = await getDashboardStats(email)
     const id = opsoData._id;
     const data = await getApplicationsByOpportunity(id);
-    console.log(data)
+    console.log(data.length)
     return (
         <div>
-            <MangeApplication data={data}></MangeApplication>
+            {
+                data.length == 0 ? <NoApplicationsForFounder></NoApplicationsForFounder> : <MangeApplication data={data}></MangeApplication>
+            }
         </div>
     );
 };

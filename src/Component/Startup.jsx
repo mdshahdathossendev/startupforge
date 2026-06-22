@@ -3,7 +3,7 @@ import { FounderEditFrom } from "./FundeerEditFrom";
 import { deleteStartup } from "@/lib/action";
 import Image from "next/image";
 
-const Startup = ({data }) => {
+const Startup = ({data}) => {
   const handleDelete = async (email) => {
     console.log(email)
     const result = await deleteStartup(email);
@@ -63,7 +63,7 @@ const Startup = ({data }) => {
 
             {/* Right Side Buttons */}
             <div className="flex md:flex-col gap-3 ml-auto">
-             <FounderEditFrom></FounderEditFrom>
+             <FounderEditFrom data={data}></FounderEditFrom>
 
               <button onClick={()=>handleDelete(data.founder_email)} className="flex items-center gap-2 px-4 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600">
                 <Trash2 size={18} />

@@ -1,4 +1,5 @@
 import MangeOporsontiy from '@/Component/MangeOporsontiy';
+import NoOpportunityPage from '@/Component/NoOpportunity';
 import { auth } from '@/lib/auth';
 import { getDashboardStats, getMangeOpportunities } from '@/lib/data';
 import { headers } from 'next/headers';
@@ -11,10 +12,11 @@ const page =  async() => {
      const email = session?.user?.email;
    const dataa = await getDashboardStats(email)   
     const data = await getMangeOpportunities(dataa._id);
-    console.log(data)
     return (
         <div>
-         <MangeOporsontiy data = {data}></MangeOporsontiy>
+        {
+            data.length == 0 ? <NoOpportunityPage></NoOpportunityPage> :  <MangeOporsontiy data = {data}></MangeOporsontiy>
+        }
         </div>
     );
 };

@@ -1,4 +1,5 @@
 import Application from '@/Component/Application';
+import NoApplications from '@/Component/NoApplication';
 import { auth } from '@/lib/auth';
 import { getApplicantByOpportunity } from '@/lib/data';
 import { headers } from 'next/headers';
@@ -14,7 +15,9 @@ console.log(data)
 
   return (
     <div>
-<Application data={data}></Application>
+    {
+      data.length == 0 ? <NoApplications></NoApplications>:<Application data={data}></Application>
+    }
     </div>
   );
 };

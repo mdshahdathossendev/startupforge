@@ -2,8 +2,10 @@
 import { createStartups } from '@/lib/action';
 import { useRouter } from 'next/navigation';
 import React from 'react';
+import toast from 'react-hot-toast';
 
 const AddOporsontiy = ({data}) => {
+    const router = useRouter()
      const onSubmit = async (e) => {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
@@ -18,7 +20,31 @@ const AddOporsontiy = ({data}) => {
       date: formData.get("deadline"),
     };
     createStartups(userData)
-   window.location.reload()
+   toast.custom(
+  () => (
+    <div className="fixed inset-0 z-[99999] flex items-center justify-center backdrop-blur-md bg-black/30">
+      <div className="bg-white rounded-3xl shadow-2xl p-8 w-[420px] text-center">
+        <div className="text-5xl mb-4">🎉</div>
+
+        <h2 className="text-2xl font-bold text-gray-900">
+          Success!
+        </h2>
+
+        <p className="text-gray-500 mt-2">
+          Opportunity created successfully.
+        </p>
+      </div>
+    </div>
+  ),
+  {
+    duration: 2000,
+  }
+);
+
+setTimeout(() => {
+  router.refresh();
+}, 2000);
+
 } 
     return (
          <div className="max-w-3xl mx-auto bg-white p-8 rounded-2xl shadow-md">
@@ -106,7 +132,7 @@ const AddOporsontiy = ({data}) => {
         {/* Submit */}
         <button
           type="submit"
-          className="w-full bg-amber-500 hover:bg-amber-600 text-white py-3 rounded-xl font-semibold"
+          className="w-full bg-blue-800 hover:bg-amber-600 text-white py-3 rounded-xl font-semibold"
         >
           Create Opportunity
         </button>

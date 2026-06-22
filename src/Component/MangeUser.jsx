@@ -43,7 +43,7 @@ export function MangeUser({users}) {
                 <Table.Row key={item._id}>
               <Table.Cell>
                 <div className="flex items-center gap-5 ">
-     <Image className="h-10 w-10" src={item.image} width={200} height={200} alt="image">
+     <Image className="h-10 border w-10 rounded-full" src={item.image} width={200} height={200} alt="image">
 
      </Image>
 

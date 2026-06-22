@@ -1,11 +1,12 @@
 'use client'
 import { updateOpportunity } from '@/lib/action';
-import { getDetlesOpportunities } from '@/lib/data';
 import { Button, Input, Label, Modal, Surface, TextField } from '@heroui/react';
 import { Pencil } from 'lucide-react';
+import { useRouter } from 'next/navigation';
 import React from 'react';
 
-const OporsontiyEdit = ({id}) => {
+const OporsontiyEdit = ({items}) => {
+  const router = useRouter()
     const onSubmit = async (e) => {
                 e.preventDefault();
                 const formData = new FormData(e.currentTarget);
@@ -14,10 +15,10 @@ const OporsontiyEdit = ({id}) => {
                   required_skills: formData.get("required_skills"),
                   work_type: formData.get("work_type"),
                   commitment_level: formData.get("commitment_level"),
+                  date: items.date
                 };
-                console.log(userData)
-               const result = await updateOpportunity(id, userData) ;
-                   
+                updateOpportunity(items._id, userData) ;
+                router.refresh()
             }
             
     return (
@@ -33,17 +34,17 @@ const OporsontiyEdit = ({id}) => {
                     </Modal.Header>
                     <Modal.Body className="p-6">
                       <Surface variant="default">
-                        <form onSubmit={onSubmit}  className="flex flex-col gap-4">
-                          <TextField className="w-full" name="role_title" type="text" variant="secondary">
+                        <form onChange={onSubmit}  className="flex flex-col gap-4">
+                          <TextField defaultValue={items.role_title || ""} className="w-full" name="role_title" type="text" variant="secondary">
                             <Label>Role Title</Label>
                             <Input placeholder="Enter your name" />
                           </TextField>
-                          <TextField className="w-full" name="required_skills" type="text" variant="secondary">
+                          <TextField defaultValue={items.required_skills || ""} className="w-full" name="required_skills" type="text" variant="secondary">
                             <Label>Required Skills</Label>
                             <Input placeholder="Enter your name" />
                           </TextField>
                             <Label>Work Type</Label>
-                           <select
+                           <select defaultValue={items.work_type || ""}
                       name="work_type"
                       className="w-full border rounded-xl px-4 py-3 outline-none focus:ring-2 focus:ring-amber-500"
                     >
@@ -51,10 +52,10 @@ const OporsontiyEdit = ({id}) => {
             <option value="Remote">Remote</option>
             <option value="On-site">On-site</option>
             <option value="Hybrid">Hybrid</option>
-                    </select>
+                    </select> 
                         
                             <Label>Commitment Level</Label>
-                         <select
+                         <select defaultValue={items.commitment_level || ""}
             name="commitment_level"
             className="w-full border rounded-xl px-4 py-3"
           >
