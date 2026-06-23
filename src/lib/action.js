@@ -1,7 +1,16 @@
-import { em } from "framer-motion/client";
 
 export const createOpportunity = async (data) => {
   const res = await fetch("http://localhost:8080/startups", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(data),
+  });
+  return res.json();
+};
+export const addPaymentHistory = async (data) => {
+  const res = await fetch("http://localhost:8080/payment", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",

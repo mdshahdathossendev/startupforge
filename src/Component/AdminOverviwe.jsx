@@ -1,6 +1,6 @@
 import React from 'react';
 import { Users, Rocket, Briefcase, DollarSign } from "lucide-react";
-const AdminOverviwe = ({ users, state, opprotunes }) => {
+const AdminOverviwe = ({ users, state, opprotunes, totalAmount }) => {
 
         const stats = [
     {
@@ -23,7 +23,7 @@ const AdminOverviwe = ({ users, state, opprotunes }) => {
     },
     {
       title: "Total Revenue",
-      value: "$45,670",
+      value: `$${totalAmount}`,
       icon: <DollarSign size={28} />,
       color: "from-orange-500 to-yellow-500",
     },

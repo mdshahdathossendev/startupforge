@@ -6,6 +6,10 @@ export const getStats = async () => {
   const res = await fetch(`http://localhost:8080/startups`)
   return res.json();
 };
+export const getTangation = async () => {
+  const res = await fetch(`http://localhost:8080/payment`)
+  return res.json();
+};
 export const getMangeOpportunities = async (id) => {
   const res = await fetch(`http://localhost:8080/opportunities/mange/${id}`) 
   return res.json();

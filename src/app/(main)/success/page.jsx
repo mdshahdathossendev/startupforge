@@ -1,4 +1,4 @@
-import { updateProfile } from '@/lib/action'
+import { addPaymentHistory, updateProfile } from '@/lib/action'
 import { stripe } from '@/lib/stripe'
 import { redirect } from 'next/navigation'
 import { CheckCircle2, Mail, ArrowRight } from 'lucide-react';
@@ -7,30 +7,37 @@ import Link from 'next/link';
 
 export default async function Success({ searchParams }) {
   const { session_id } = await searchParams
-
   if (!session_id)
     throw new Error('Please provide a valid session_id (`cs_test_...`)')
-
-  const {
-    status,
-    metadata,
-    customer_details: { email: customerEmail }
-  } = await stripe.checkout.sessions.retrieve(session_id, {
-    expand: ['line_items', 'payment_intent']
-  })
-
+  
+ const {
+  status,
+  metadata,
+  amount_total,
+  subscription,
+  customer_details: { email: customerEmail }
+} = await stripe.checkout.sessions.retrieve(session_id, {
+  expand: ['line_items', 'subscription']
+});
+const paymentData = {
+  user_email: customerEmail,
+  amount: amount_total / 100,
+  transaction_id: subscription.id,
+  payment_status: status,
+  paid_at: new Date(),
+};
   if (status === 'open') {
     return redirect('/')
   }
 
   if (status === 'complete') {
+    addPaymentHistory(paymentData)
     await updateProfile(metadata.userId, {
   plan: "Pro",
 });
-    console.log(metadata.userId)
     return (
       <section id="success">
-       <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-green-50 via-white to-emerald-100 px-4">
+       <div className="min-h-screen flex items-center justify-center px-4">
       <div className="max-w-lg w-full bg-white rounded-3xl shadow-2xl p-10 text-center">
 
         {/* Success Icon */}
@@ -50,22 +57,6 @@ export default async function Success({ searchParams }) {
           <span className="font-semibold text-blue-600"> Pro Membership</span>.
         </p>
 
-        {/* Email Box */}
-        <div className="mt-8 bg-gray-50 border border-gray-200 rounded-2xl p-5">
-          <div className="flex items-center justify-center gap-2 text-gray-700 mb-2">
-            <Mail className="w-5 h-5" />
-            <span className="font-medium">Confirmation Email Sent</span>
-          </div>
-
-          <p className="text-sm text-gray-500">
-            A receipt and confirmation have been sent to:
-          </p>
-
-          <p className="font-semibold text-blue-600 mt-2 break-all">
-            {customerEmail}
-          </p>
-        </div>
-
         {/* Membership Activated */}
         <div className="mt-6 bg-green-50 border border-green-200 rounded-2xl p-4">
           <p className="text-green-700 font-medium">
@@ -76,10 +67,10 @@ export default async function Success({ searchParams }) {
         {/* Buttons */}
         <div className="mt-8 flex flex-col gap-3">
           <Link
-            href="/dashboard"
+            href="/opportunities"
             className="w-full py-4 rounded-2xl bg-gradient-to-r from-blue-600 to-indigo-700 text-white font-semibold flex items-center justify-center gap-2 hover:scale-[1.02] transition"
           >
-            Go to Dashboard
+           Contoneue Applying
             <ArrowRight className="w-5 h-5" />
           </Link>
 
