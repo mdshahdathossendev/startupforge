@@ -1,3 +1,4 @@
+import Footer from "@/Component/Footer";
 import Navbar from "@/Component/Navber";
 import { Inter } from "next/font/google";
 import React from "react";
@@ -13,6 +14,7 @@ const Layout = ({ children }) => {
     >
       <Navbar />
       {children}
+      <Footer></Footer>
     </div>
   );
 };

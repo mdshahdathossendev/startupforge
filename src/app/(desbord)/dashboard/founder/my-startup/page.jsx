@@ -11,6 +11,7 @@ export default function StartupForm() {
      const { data: session } = authClient.useSession();
     const [data, setData] = useState([]);
     const email = session?.user?.email;
+    const name = session?.user?.name
 useEffect(() => {
   if (!email) return;
 
@@ -30,6 +31,7 @@ useEffect(() => {
       industry: formData.get("industry"),
       funding_stage: formData.get("funding_stage"),
       founder_email: email,
+      founder_name: name,
       description: formData.get("description"),
       logo: imageUrl,
       stats: "Pending",

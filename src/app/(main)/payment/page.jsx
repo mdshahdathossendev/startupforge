@@ -1,4 +1,3 @@
-'use client';
 
 import { CheckCircle } from 'lucide-react';
 
@@ -49,12 +48,15 @@ export default function PricingPage() {
             </div>
           </div>
 
-          {/* Payment Button */}
-          <button
-            className="w-full py-4 rounded-2xl bg-gradient-to-r from-blue-600 to-indigo-700 text-white font-semibold text-lg hover:scale-[1.02] transition-all"
-          >
-            Pay $10 & Upgrade
-          </button>
+          {/* Payment Button Form */}
+          <form action="/api/checkout_session" method="POST">
+            <button 
+              type="submit"
+              className="w-full py-4 rounded-2xl bg-gradient-to-r from-blue-600 to-indigo-700 text-white font-semibold text-lg hover:scale-[1.02] transition-all cursor-pointer"
+            >
+              Pay $10 & Upgrade
+            </button>
+          </form>
 
           <p className="text-center text-gray-400 text-sm mt-4">
             Secure payment powered by Stripe

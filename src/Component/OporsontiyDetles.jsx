@@ -18,6 +18,7 @@ const OporsontiyDetles = ({job, data}) => {
      
     e.preventDefault();
      const limit = planLimits[session?.user?.plan]
+     console.log(limit)
      if(data.length >= limit){
       router.push('/payment')
      }

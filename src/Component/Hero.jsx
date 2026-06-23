@@ -16,7 +16,7 @@ export default function Hero() {
           className="text-5xl md:text-6xl font-bold text-gray-900 leading-tight"
         >
           Build Your Future <br />
-          <span className="text-amber-600">Startup Team</span>
+          <span className="text-blue-600">Startup Team</span>
         </motion.h1>
 
         {/* Description */}
@@ -38,10 +38,10 @@ export default function Hero() {
           className="mt-5"
         >
           <div className="flex justify-center gap-8">
-            <button className="px-4 p-2 bg-amber-600 text-white rounded-xl font-semibold text-lg shadow-lg hover:scale-105 hover:transition-all duration-300">
+            <button className="px-4 p-2 bg-blue-600 text-white rounded-xl font-semibold text-lg shadow-lg hover:scale-105 hover:transition-all duration-300">
             Explore Opportunities
           </button>
-            <button className="px-4 p-2 border border-amber-400 text-amber-500 rounded-xl font-semibold text-lg  hover:scale-105 hover: transition-all duration-300">
+            <button className="px-4 p-2 border border-blue-400 text-blue-500 rounded-xl font-semibold text-lg  hover:scale-105 hover: transition-all duration-300">
             Startups
           </button>
           </div>
