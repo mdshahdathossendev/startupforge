@@ -18,8 +18,11 @@ export const getDetlesOpportunities = async (id) => {
   const res = await fetch(`http://localhost:8080/opportunities/${id}`) 
   return res.json();
 };
-export const getOpportunities = async () => {
-  const res = await fetch(`http://localhost:8080/opportunities`) 
+export const getOpportunities = async (page) => {
+  const res = await fetch(
+    `http://localhost:8080/opportunities?page=${page}`
+  );
+
   return res.json();
 };
 export const getApplicationsByOpportunity = async (opportunity_id) => {

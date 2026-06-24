@@ -40,7 +40,7 @@ const sinupPage = () => {
     }
   };
 
-  // ✅ EMAIL SIGNUP
+ 
   const onSubmit = async (e) => {
     e.preventDefault();
 
@@ -50,7 +50,7 @@ const sinupPage = () => {
       name: formData.get("name"),
       email: formData.get("email"),
       password: formData.get("password"),
-      role: role, // fixed (use state instead of form)
+      role: role, 
       image: imageUrl,
       plan: "Free",
     };
@@ -60,19 +60,11 @@ const sinupPage = () => {
     console.log(data, error);
     console.log(userData);
   };
-
-  // ✅ GOOGLE SIGN IN
-  const handleGoogleSignIn = async () => {
-    try {
-      const { data, error } = await authClient.signIn.social({
-        provider: "google",
-      });
-
-      console.log(data, error);
-    } catch (err) {
-      console.error(err);
-    }
-  };
+const handleGoogleLogin = async () => {
+ const data = await authClient.signIn.social({
+    provider: "google",
+  });
+}
 
   return (
     <div className="w-100 mx-auto backdrop-blur-md bg-white/30 border-gray-200 border-2 mt-8 rounded-lg py-8">
@@ -84,7 +76,7 @@ const sinupPage = () => {
       {/* ✅ GOOGLE BUTTON */}
       <div className="flex justify-center mt-6">
         <Button
-          onClick={handleGoogleSignIn}
+          onClick={handleGoogleLogin}
           className="w-80 rounded-sm bg-white border hover:bg-gray-100 flex items-center gap-2"
         >
           <img

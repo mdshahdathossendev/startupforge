@@ -4,6 +4,7 @@ import { Calendar} from "lucide-react";
 import { authClient } from '@/lib/auth-client';
 import { createApplication } from '@/lib/action';
 import { useRouter } from 'next/navigation';
+import toast from 'react-hot-toast';
 const OporsontiyDetles = ({job, data}) => {
   const router = useRouter()
     const { data: session } = authClient.useSession();
@@ -14,7 +15,7 @@ const OporsontiyDetles = ({job, data}) => {
       Pro: 15
      }
      
-    const handleApply = (e) => {
+    const handleApply = async(e) => {
      
     e.preventDefault();
      const limit = planLimits[session?.user?.plan]
@@ -39,8 +40,14 @@ const OporsontiyDetles = ({job, data}) => {
       startup_name: job.startup_name,
       applied_at: new Date()
     };
-    createApplication(userData);
-  console.log(userData);
+  
+  const result = await createApplication(userData);
+  if (result?.success == false) {
+   alert("Only Collaborators can apply for opportunities. fd sfsdafasdfasdf");
+  }
+  else{
+    alert('net ata')
+  }
 };
     return (
         <div className="min-h-screen bg-gray-50 py-10 px-4">

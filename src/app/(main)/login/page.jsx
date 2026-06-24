@@ -16,6 +16,11 @@ const sinupPage = () => {
 });
 console.log(data, error)
   };
+  const handleGoogleLogin = async () => {
+   const data = await authClient.signIn.social({
+      provider: "google",
+    });
+  }
     return (
       <div className='w-100 mx-auto backdrop-blur-md bg-white/30 border-gray-200 border-2 mt-8 rounded-lg py-8'>
         <div className='text-center space-y-2'>
@@ -23,6 +28,20 @@ console.log(data, error)
             <h2 className='text-4xl font-bold'>Welcome Back</h2>
             <p> Sing in Your Account</p>
         </div>
+         <div className="flex justify-center mt-6">
+        <Button
+          onClick={handleGoogleLogin}
+          className="w-80 rounded-sm bg-white border hover:bg-gray-100 flex items-center gap-2"
+        >
+          <img
+            src="https://www.svgrepo.com/show/475656/google-color.svg"
+            className="w-5 h-5"
+            alt="google"
+          />
+         <p className="text-black"> Continue with Google</p>
+        </Button>
+      </div>
+
           <Form className="flex w-80 flex-col gap-4 mx-auto mt-8 " onSubmit={onSubmit}>
       <TextField
         isRequired

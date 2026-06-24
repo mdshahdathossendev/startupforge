@@ -1,10 +1,18 @@
+'use client'
 import Link from "next/link";
 import { Briefcase, Calendar, MapPin } from "lucide-react";
+import { useState } from "react";
+import { Pagination } from "@heroui/react";
 
 const Oposrsontiys = ({ data }) => {
+  const alldata = data.opportunities
+  const totalPages = data.totalPages
+  const page = data.currentPage
+  console.log(data)
   return (
+    <>
     <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 container mx-auto mt-8">
-      {data.map((job) => (
+      {alldata.map((job) => (
         <div
           key={job._id}
           className="group relative  overflow-hidden rounded-md bg-white border border-gray-200 shadow-lg hover:shadow-2xl hover:-translate-y-2 transition-all duration-500"
@@ -69,6 +77,43 @@ const Oposrsontiys = ({ data }) => {
         </div>
       ))}
     </div>
+    <Pagination className="justify-center mt-6">
+      <Pagination.Content>
+        <Pagination.Item>
+          <Pagination.Previous isDisabled={page === 1}>
+            <Pagination.PreviousIcon />
+            <Link href={`/opportunities?page=${page - 1}`}>
+            <span>Previous</span>
+            </Link>
+          </Pagination.Previous>
+        </Pagination.Item>
+        {Array.from({length: totalPages}, (_, i) => i + 1).map((p) => (
+          <Pagination.Item key={p}>
+            <Link href={`/opportunities?page=${p}`}>
+            <Pagination.Link
+  isActive={p === page}
+  className={
+    p === page
+      ? "bg-blue-600 text-white border-blue-600 mx-4"
+      : "bg-white text-gray-700"
+  }
+>
+  {p}
+</Pagination.Link>
+            </Link>
+          </Pagination.Item>
+        ))}
+        <Pagination.Item>
+          <Pagination.Next isDisabled={page === totalPages}>
+            <Link href={`/opportunities?page=${Number(page) + 1}`}>
+            <span>Next</span>
+            </Link>
+            <Pagination.NextIcon />
+          </Pagination.Next>
+        </Pagination.Item>
+      </Pagination.Content>
+    </Pagination>
+    </>
   );
 };
 

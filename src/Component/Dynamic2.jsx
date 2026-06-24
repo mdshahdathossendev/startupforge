@@ -2,8 +2,8 @@
 
 import { motion } from "framer-motion";
 
-export default function JobCards({ opportunities }) {
-  const validJobs = opportunities.filter(
+export default function JobCards({ opportunities = [] }) {
+  const validJobs = opportunities.opportunities.filter(
     (job) =>
       job.role_title?.trim() &&
       job.required_skills?.trim() &&
@@ -11,9 +11,8 @@ export default function JobCards({ opportunities }) {
   );
 
   return (
-    <section className="py-24 bg-slate-50">
+    <section className="py-24">
       <div className="container mx-auto px-4">
-        {/* Header */}
         <div className="text-center mb-16">
           <span className="inline-block px-4 py-2 rounded-full bg-violet-50 text-violet-600 text-sm font-semibold mb-4">
             💼 Open Opportunities
@@ -29,9 +28,8 @@ export default function JobCards({ opportunities }) {
           </p>
         </div>
 
-        {/* Cards */}
         <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
-          {validJobs.slice(0, 6).map((job, index) => (
+          {validJobs.map((job, index) => (
             <motion.div
               key={job._id}
               initial={{ opacity: 0, y: 30 }}
@@ -47,16 +45,13 @@ export default function JobCards({ opportunities }) {
               }}
               className="group bg-white rounded-3xl border border-slate-200 shadow-sm hover:shadow-2xl overflow-hidden transition-all duration-500"
             >
-              {/* Top Gradient */}
               <div className="h-1 bg-gradient-to-r from-violet-500 via-blue-500 to-cyan-500" />
 
               <div className="p-7">
-                {/* Role */}
                 <h3 className="text-2xl font-bold text-slate-900 mb-6">
                   {job.role_title}
                 </h3>
 
-                {/* Startup */}
                 <div className="mb-4">
                   <p className="text-sm text-slate-400 mb-1">
                     Startup Name
@@ -67,7 +62,6 @@ export default function JobCards({ opportunities }) {
                   </p>
                 </div>
 
-                {/* Skills */}
                 <div className="mb-4">
                   <p className="text-sm text-slate-400 mb-1">
                     Required Skills
@@ -78,7 +72,6 @@ export default function JobCards({ opportunities }) {
                   </p>
                 </div>
 
-                {/* Deadline */}
                 <div>
                   <p className="text-sm text-slate-400 mb-1">
                     Application Deadline
