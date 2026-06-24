@@ -5,22 +5,28 @@ import {Button, Description, FieldError, Form, Input, Label, TextField} from "@h
 import { CheckCheck } from 'lucide-react';
 import { div } from 'framer-motion/client';
 import { authClient } from '@/lib/auth-client';
+import { useRouter, useSearchParams } from 'next/navigation';
+import Link from 'next/link';
 const sinupPage = () => {
+  const router = useRouter
+  const searchParams = useSearchParams();
+     const redirect = searchParams.get("redirect");
     const onSubmit = async(e) => {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
     const { data, error } = await authClient.signIn.email({
     email:formData.get('email'),
     password: formData.get('password'),
-    callbackURL: "/",
+    callbackURL: redirect || "/",
 });
 console.log(data, error)
   };
-  const handleGoogleLogin = async () => {
-   const data = await authClient.signIn.social({
-      provider: "google",
-    });
-  }
+ const handleGoogleLogin = async () => {
+  const data = await authClient.signIn.social({
+    provider: "google",
+    callbackURL: redirect || "/",
+  });
+};
     return (
       <div className='w-100 mx-auto backdrop-blur-md bg-white/30 border-gray-200 border-2 mt-8 rounded-lg py-8'>
         <div className='text-center space-y-2'>
@@ -91,6 +97,21 @@ console.log(data, error)
         </Button>
       </div>
     </Form>
+    {/* ALREADY ACCOUNT */}
+<div className="text-center mt-4">
+  <p className="text-sm text-gray-500">
+    No Cariate Account
+  </p>
+
+ <Link href={'/sinin'}>
+  <button
+    type="button"
+    className="mt-2 text-indigo-600 font-medium hover:underline"
+  >
+    Regstion to your account
+  </button>
+ </Link>
+</div>
       </div>
     );
 };
