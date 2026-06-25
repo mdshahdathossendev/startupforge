@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { Rocket } from "lucide-react";
+import Link from "next/link";
 
 export default function Hero() {
   return (
@@ -38,12 +39,16 @@ export default function Hero() {
           className="mt-5"
         >
           <div className="flex justify-center gap-8">
+          <Link href={'/opportunities'}>
             <button className="px-4 p-2 bg-blue-600 text-white rounded-xl font-semibold text-lg shadow-lg hover:scale-105 hover:transition-all duration-300">
             Explore Opportunities
           </button>
+          </Link>
+          <Link href={'/startups'}>
             <button className="px-4 p-2 border border-blue-400 text-blue-500 rounded-xl font-semibold text-lg  hover:scale-105 hover: transition-all duration-300">
             Startups
           </button>
+          </Link>
           </div>
         </motion.div>
       </div>
