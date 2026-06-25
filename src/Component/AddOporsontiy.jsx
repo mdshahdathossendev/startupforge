@@ -3,12 +3,25 @@ import { createStartups } from '@/lib/action';
 import { CustomToast } from '@/lib/coustomtost';
 import { useRouter } from 'next/navigation';
 import React, { useState } from 'react';
+import toast from 'react-hot-toast';
 
 const AddOporsontiy = ({ data }) => {
   const [showToast, setShowToast] = useState(false);
   const router = useRouter();
-  if (data?.stats !== "Approved") {
-    alert("Your startup is not approved yet!");
+  if (data?.status !== "Approved") {
+    toast(
+  "Your startup is not approved yet!",
+  {
+    icon: "⚠️",
+    style: {
+      borderRadius: "12px",
+      background: "#fff",
+      color: "#333",
+      padding: "16px",
+      border: "1px solid #f59e0b",
+    },
+  }
+)
     return;
   }
   const onSubmit = async (e) => {
