@@ -25,7 +25,7 @@ export default function Daynamic1({ startup }) {
 
         {/* Startup Cards */}
         <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
-          {startup?.map((item, index) => (
+          {startup.slice(0, 6)?.map((item, index) => (
             <motion.div
               key={item._id}
               initial={{ opacity: 0, y: 40 }}
