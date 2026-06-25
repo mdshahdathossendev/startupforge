@@ -20,7 +20,7 @@ useEffect(() => {
     .then((res) => setData(res))
     .catch((err) => console.error(err));
 }, [email, token]);
-   console.log(data.length)
+
     
     const onSubmit = async (e) => {
     e.preventDefault();

@@ -21,11 +21,10 @@ export function MangeUser({users}) {
   const userData = {
     status,
   };
-  console.log(userData)
   updateProfile(id, userData)
    router.refresh()
 };
-  console.log(users)
+ 
   return (
      <Table variant="secondary">
       <Table.ScrollContainer>

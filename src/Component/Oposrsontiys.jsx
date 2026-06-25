@@ -8,7 +8,6 @@ const Oposrsontiys = ({ data }) => {
   const alldata = data.opportunities
   const totalPages = data.totalPages
   const page = data.currentPage
-  console.log(data)
   return (
     <>
     <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 container mx-auto mt-8">

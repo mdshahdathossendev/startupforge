@@ -18,11 +18,11 @@ const OporsontiyDetles = ({job, data}) => {
     const handleApply = async(e) => {
     e.preventDefault();
      const limit = planLimits[session?.user?.plan]
-     console.log(limit)
+ 
      if(data.length >= limit){
       router.push('/payment')
      }
-     console.log(data.length, limit)
+  
      if (session?.user?.role !== "Collaborator") {
     alert("Only Collaborators can apply for opportunities.");
     return;

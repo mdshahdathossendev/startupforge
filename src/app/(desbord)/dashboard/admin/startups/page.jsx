@@ -10,7 +10,7 @@ const page = async() => {
         });
         const token = session.session.token
     const data = await getStats(token)
-    console.log(data)
+
     return (
         <div>
            <ManageSatage data = {data}></ManageSatage>

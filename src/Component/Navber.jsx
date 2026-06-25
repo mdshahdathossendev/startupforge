@@ -10,7 +10,7 @@ export default async function Navbar() {
     headers: await headers(),
   });
 
-  console.log(session);
+ 
 
   return (
     <nav className="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-gray-200">

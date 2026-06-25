@@ -21,7 +21,7 @@ export default async function Overview() {
   const applications = await getApplicantByOpportunity(id, token);
 
   const total = applications.length;
-  console.log(total, applications)
+ 
 
   const stats = applications.reduce(
     (acc, item) => {

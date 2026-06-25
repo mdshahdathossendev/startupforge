@@ -19,7 +19,7 @@ const sinupPage = () => {
     password: formData.get('password'),
     callbackURL: redirect || "/",
 });
-console.log(data, error)
+
   };
  const handleGoogleLogin = async () => {
   const data = await authClient.signIn.social({

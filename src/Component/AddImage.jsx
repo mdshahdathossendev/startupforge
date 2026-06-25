@@ -58,7 +58,7 @@ export default function CreateProduct() {
 
       const result = await response.json();
 
-      console.log(result);
+  
 
       reset();
     } catch (error) {

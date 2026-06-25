@@ -17,7 +17,7 @@ const page = async () => {
   const acceptedCount = applaction.filter(
     item => item.status === "Accepted"
   ).length;
- console.log(data, 'data')
+
   return (
     <div>
       <FounderOverview data={data} applaction={applaction} acceptedCount={acceptedCount}></FounderOverview>

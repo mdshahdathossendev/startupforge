@@ -67,7 +67,6 @@ const { data, error } = await authClient.signUp.email({
 });
 const target = redirect || "/";
 router.push(target);
-console.log(data, error)
 }
 const handleGoogleLogin = async () => {
  const data = await authClient.signIn.social({

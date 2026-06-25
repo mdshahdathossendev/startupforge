@@ -23,7 +23,6 @@ export function UpdetProfileset() {
               skill: formData.get("skill"),
               logo: imageUrl,
             };
-          console.log(userDataFrom)
           updateProfile(id, userDataFrom)
             router.refresh();
         }

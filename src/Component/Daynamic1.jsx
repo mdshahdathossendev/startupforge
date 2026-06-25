@@ -3,7 +3,6 @@
 import { motion } from "framer-motion";
 
 export default function Daynamic1({ startup }) {
-  console.log(startup)
   return (
     <section className="py-24">
       <div className="container mx-auto px-4">

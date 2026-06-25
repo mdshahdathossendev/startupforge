@@ -12,7 +12,7 @@ const page = async () => {
   const id = session?.user?.id;
   const token = session.session.token
   const data = await getApplicantByOpportunity(id, token)
-  console.log(data)
+
 
   return (
     <div>

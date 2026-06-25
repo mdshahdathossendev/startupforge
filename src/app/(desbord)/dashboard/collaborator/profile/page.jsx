@@ -10,9 +10,9 @@ export default async function ProfileSection() {
   });
   const id = session?.user?.id;
   const token = session.session.token
-  console.log(session)
+ 
   const userData = await getUser(id, token)
-  console.log(session, token)
+ 
   return (
     <div>
       <UpdetProfile userData={userData}></UpdetProfile>

@@ -11,7 +11,7 @@ import React from 'react';
 const Popber = () => {
     const router = useRouter()
    const { data: session } = authClient.useSession() 
-   console.log(session)
+
     
     const handellogOut = async() => {
         await authClient.signOut({
