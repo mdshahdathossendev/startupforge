@@ -2,16 +2,28 @@ import { Trash2 } from "lucide-react";
 import { FounderEditFrom } from "./FundeerEditFrom";
 import { deleteStartup } from "@/lib/action";
 import Image from "next/image";
+import toast from "react-hot-toast";
 
 const Startup = ({ data }) => {
   const handleDelete = async (email) => {
     const result = await deleteStartup(email);
 
-    if (result.deletedCount > 0) {
-      alert("Deleted Successfully");
-      window.location.reload();
-    }
-  };
+   if (result.deletedCount > 0) {
+  toast.success("Deleted Successfully!", {
+  icon: "🗑️",
+  style: {
+    borderRadius: "12px",
+    background: "#10b981",
+    color: "#fff",
+    padding: "12px 16px",
+  },
+});
+
+  setTimeout(() => {
+    window.location.reload();
+  }, 1000);
+   }
+  }
 
   return (
     <div className="max-w-5xl mx-auto">

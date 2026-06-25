@@ -8,7 +8,7 @@ import toast from 'react-hot-toast';
 const AddOporsontiy = ({ data }) => {
   const [showToast, setShowToast] = useState(false);
   const router = useRouter();
-  if (data?.status !== "Approved") {
+  if (data?.stats !== "Approved") {
     toast(
   "Your startup is not approved yet!",
   {
@@ -21,7 +21,7 @@ const AddOporsontiy = ({ data }) => {
       border: "1px solid #f59e0b",
     },
   }
-)
+);
     return;
   }
   const onSubmit = async (e) => {
