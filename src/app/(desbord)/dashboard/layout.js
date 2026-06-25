@@ -1,15 +1,13 @@
 import Sidebar from "@/Component/Sideber";
+
 export default async function Layout({ children }) {
   return (
-    <div className="bg-gray-50">
+    <div className="min-h-screen bg-gray-50 flex flex-col lg:flex-row">
       
-      {/* Fixed Sidebar */}
-      <div className="fixed left-0 top-0 h-screen w-72">
+      <div className="lg:w-72 lg:flex-shrink-0">
         <Sidebar />
       </div>
-
-      {/* Main Content */}
-      <main className="ml-72 min-h-screen p-6">
+      <main className="flex-1 w-full p-4 md:p-6 lg:p-8 overflow-y-auto">
         {children}
       </main>
 
