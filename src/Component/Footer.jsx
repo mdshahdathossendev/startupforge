@@ -2,6 +2,9 @@
 
 import { Mail } from "lucide-react";
 import Link from "next/link";
+import { FaFacebook, FaInstagram } from "react-icons/fa";
+import { LiaLinkedin } from "react-icons/lia";
+import { TiSocialTwitter } from "react-icons/ti";
 export default function Footer() {
   return (
     <footer className="relative mt-24 overflow-hidden bg-slate-950 text-white">
@@ -37,7 +40,7 @@ export default function Footer() {
               </li>
 
               <li>
-                <Link href="/jobs" className="hover:text-white transition">
+                <Link href="/opportunities" className="hover:text-white transition">
                   Open Opportunities
                 </Link>
               </li>
@@ -105,27 +108,28 @@ export default function Footer() {
                 href="#"
                 className="p-3 rounded-xl bg-slate-900 hover:bg-blue-600 transition-all duration-300 hover:-translate-y-1"
               >
+                <LiaLinkedin size={30}></LiaLinkedin>
               </a>
 
               <a
                 href="#"
                 className="p-3 rounded-xl bg-slate-900 hover:bg-sky-500 transition-all duration-300 hover:-translate-y-1"
               >
-                
+                <FaInstagram  size={30}></FaInstagram>
               </a>
 
               <a
                 href="#"
                 className="p-3 rounded-xl bg-slate-900 hover:bg-blue-700 transition-all duration-300 hover:-translate-y-1"
               >
-               
+               <FaFacebook  size={30}></FaFacebook>
               </a>
 
               <a
                 href="#"
                 className="p-3 rounded-xl bg-slate-900 hover:bg-gray-700 transition-all duration-300 hover:-translate-y-1"
               >
-                
+                <TiSocialTwitter  size={30}></TiSocialTwitter>
               </a>
             </div>
           </div>

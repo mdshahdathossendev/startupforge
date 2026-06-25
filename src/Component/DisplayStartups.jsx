@@ -9,23 +9,8 @@ const DisplayStartups = ({ data }) => {
           key={startup._id}
           className="relative bg-white rounded-3xl p-6 border border-gray-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
         >
-          {/* Status Badge */}
-          <div
-            className={`absolute top-4 right-4 px-3 py-1 rounded-full text-xs font-semibold text-white
-              ${
-                startup.stats === "Approved"
-                  ? "bg-green-500"
-                  : startup.stats === "Pending"
-                  ? "bg-yellow-500"
-                  : startup.stats === "Rejected"
-                  ? "bg-red-500"
-                  : "bg-gray-500"
-              }`}
-          >
-            {startup.stats}
-          </div>
-
-          {/* Logo + Name */}
+         
+      
           <div className="flex items-center gap-4">
             <Image
               src={startup.logo || "/default.png"}

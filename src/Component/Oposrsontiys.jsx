@@ -76,42 +76,70 @@ const Oposrsontiys = ({ data }) => {
         </div>
       ))}
     </div>
-    <Pagination className="justify-center mt-6">
-      <Pagination.Content>
-        <Pagination.Item>
-          <Pagination.Previous isDisabled={page === 1}>
+  <Pagination className="justify-center mt-6 flex-wrap gap-2 px-4 mx-auto">
+  <Pagination.Content className="flex items-center gap-1 sm:gap-2">
+    
+    {/* Previous Button */}
+    <Pagination.Item>
+      {page === 1 ? (
+        <span className="opacity-50 cursor-not-allowed flex items-center gap-1 px-3 py-2 border rounded-xl text-gray-400 text-sm">
+          <Pagination.PreviousIcon />
+          <span>Previous</span>
+        </span>
+      ) : (
+        <Link href={`/opportunities?page=${page - 1}`} passHref legacyBehavior>
+          <Pagination.Previous className="hover:bg-gray-100 rounded-xl text-sm transition">
             <Pagination.PreviousIcon />
-            <Link href={`/opportunities?page=${page - 1}`}>
             <span>Previous</span>
-            </Link>
           </Pagination.Previous>
-        </Pagination.Item>
-        {Array.from({length: totalPages}, (_, i) => i + 1).map((p) => (
-          <Pagination.Item key={p}>
-            <Link href={`/opportunities?page=${p}`}>
+        </Link>
+      )}
+    </Pagination.Item>
+
+    {/* Page Numbers: Hidden on mobile, visible on medium screens and up */}
+    <div className="hidden md:flex items-center gap-1">
+      {Array.from({ length: totalPages }, (_, i) => i + 1).map((p) => (
+        <Pagination.Item key={p}>
+          <Link href={`/opportunities?page=${p}`} passHref legacyBehavior>
             <Pagination.Link
-  isActive={p === page}
-  className={
-    p === page
-      ? "bg-blue-600 text-white border-blue-600 mx-4"
-      : "bg-white text-gray-700"
-  }
->
-  {p}
-</Pagination.Link>
-            </Link>
-          </Pagination.Item>
-        ))}
-        <Pagination.Item>
-          <Pagination.Next isDisabled={page === totalPages}>
-            <Link href={`/opportunities?page=${Number(page) + 1}`}>
+              isActive={p === page}
+              className={`px-4 py-2 rounded-xl text-sm transition font-medium ${
+                p === page
+                  ? "bg-blue-600 text-white border-blue-600 shadow-md"
+                  : "bg-white text-gray-700 hover:bg-gray-100 border border-gray-200"
+              }`}
+            >
+              {p}
+            </Pagination.Link>
+          </Link>
+        </Pagination.Item>
+      ))}
+    </div>
+
+    {/* Mobile Page Indicator (e.g., 2 / 10) */}
+    <div className="md:hidden text-sm font-medium text-gray-600 px-2">
+      {page} / {totalPages}
+    </div>
+
+    {/* Next Button */}
+    <Pagination.Item>
+      {page === totalPages ? (
+        <span className="opacity-50 cursor-not-allowed flex items-center gap-1 px-3 py-2 border rounded-xl text-gray-400 text-sm">
+          <span>Next</span>
+          <Pagination.NextIcon />
+        </span>
+      ) : (
+        <Link href={`/opportunities?page=${Number(page) + 1}`} passHref legacyBehavior>
+          <Pagination.Next className="hover:bg-gray-100 rounded-xl text-sm transition">
             <span>Next</span>
-            </Link>
             <Pagination.NextIcon />
           </Pagination.Next>
-        </Pagination.Item>
-      </Pagination.Content>
-    </Pagination>
+        </Link>
+      )}
+    </Pagination.Item>
+
+  </Pagination.Content>
+</Pagination>
     </>
   );
 };

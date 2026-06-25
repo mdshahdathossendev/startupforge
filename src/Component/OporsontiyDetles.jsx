@@ -41,8 +41,22 @@ const OporsontiyDetles = ({job, data}) => {
       applied_at: new Date()
     };
   
-  const result = await createApplication(userData);
-};
+   createApplication(userData);
+  
+  toast.success("Application Submitted Successfully!", {
+  duration: 4000,
+  position: "top-right",
+  style: {
+    background: "#111827",
+    color: "#fff",
+    border: "1px solid #22c55e",
+    borderRadius: "12px",
+    padding: "16px",
+  },
+  icon: "🚀",
+});
+router.refresh()
+    }
     return (
         <div className="min-h-screen bg-gray-50 py-10 px-4">
   <div className="max-w-7xl mx-auto grid lg:grid-cols-3 gap-8">
