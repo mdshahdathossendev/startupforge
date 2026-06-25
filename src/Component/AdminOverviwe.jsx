@@ -17,7 +17,7 @@ const AdminOverviwe = ({ users, state, opprotunes, totalAmount }) => {
     },
     {
       title: "Total Opportunities",
-      value: opprotunes.length,
+      value: opprotunes.opportunities.length,
       icon: <Briefcase size={28} />,
       color: "from-green-500 to-emerald-500",
     },

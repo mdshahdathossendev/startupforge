@@ -4,7 +4,6 @@ import React from "react";
 import { UpdetProfileset } from "./UpdetProiple";
 
 const ProfileSection = ({ userData }) => {
-  console.log(userData);
 
   const hasValue = (value) => value && value.toString().trim() !== "";
 

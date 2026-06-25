@@ -10,8 +10,10 @@ const page =  async() => {
             headers: await headers(),
           });
      const email = session?.user?.email;
+ const token = session.session.token
    const dataa = await getDashboardStats(email)   
-    const data = await getMangeOpportunities(dataa._id);
+    const data = await getMangeOpportunities(dataa._id, token);
+    console.log(data, dataa, 'test')
     return (
         <div>
         {

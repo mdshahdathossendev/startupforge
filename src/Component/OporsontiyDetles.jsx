@@ -16,13 +16,13 @@ const OporsontiyDetles = ({job, data}) => {
      }
      
     const handleApply = async(e) => {
-     
     e.preventDefault();
      const limit = planLimits[session?.user?.plan]
      console.log(limit)
      if(data.length >= limit){
       router.push('/payment')
      }
+     console.log(data.length, limit)
      if (session?.user?.role !== "Collaborator") {
     alert("Only Collaborators can apply for opportunities.");
     return;
@@ -42,12 +42,6 @@ const OporsontiyDetles = ({job, data}) => {
     };
   
   const result = await createApplication(userData);
-  if (result?.success == false) {
-   alert("Only Collaborators can apply for opportunities. fd sfsdafasdfasdf");
-  }
-  else{
-    alert('net ata')
-  }
 };
     return (
         <div className="min-h-screen bg-gray-50 py-10 px-4">

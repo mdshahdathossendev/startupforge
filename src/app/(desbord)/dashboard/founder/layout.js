@@ -13,7 +13,7 @@ const Layout = async ({ children }) => {
   }
 
   
-  if (session.user.role !== "founder") {
+  if (session.user.role !== "Founder") {
     redirect("/");
   }
 

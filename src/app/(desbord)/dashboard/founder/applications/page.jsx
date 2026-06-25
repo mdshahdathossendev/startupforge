@@ -10,10 +10,11 @@ const page = async() => {
      const session = await auth.api.getSession({
         headers: await headers(),});
     const email = session?.user?.email;
+     const token = session.session.token
     const opsoData = await getDashboardStats(email)
     const id = opsoData._id;
-    const data = await getApplicationsByOpportunity(id);
-    console.log(data.length)
+    const data = await getApplicationsByOpportunity(id, token);
+   
     return (
         <div>
             {

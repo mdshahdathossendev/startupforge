@@ -43,7 +43,7 @@ const ManageSatage = ({data}) => {
           <div className="flex gap-2">
             <button
            onClick={() => {
-  updateStartupData(items._id, "Approved");
+     updateStartupData(items._id, "Approved");
   router.refresh();
 }}
               className="px-3 py-1 bg-green-500 text-white rounded-md hover:bg-green-600"

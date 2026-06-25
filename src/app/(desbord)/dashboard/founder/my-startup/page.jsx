@@ -5,21 +5,22 @@ import { createOpportunity } from "@/lib/action";
 import { authClient } from "@/lib/auth-client";
 import { getDashboardStats } from "@/lib/data";
 import Image from "next/image";
-import { use, useEffect, useState } from "react";
+import {useEffect, useState } from "react";
 
 export default function StartupForm() {
      const { data: session } = authClient.useSession();
     const [data, setData] = useState([]);
     const email = session?.user?.email;
     const name = session?.user?.name
+     const token = session?.user?.token
+     
 useEffect(() => {
   if (!email) return;
-
   getDashboardStats(email)
     .then((res) => setData(res))
     .catch((err) => console.error(err));
-}, [email]);
-   
+}, [email, token]);
+   console.log(data.length)
     
     const onSubmit = async (e) => {
     e.preventDefault();
@@ -33,6 +34,7 @@ useEffect(() => {
       founder_email: email,
       founder_name: name,
       description: formData.get("description"),
+      temmumber: formData.get("temmumber"),
       logo: imageUrl,
       stats: "Pending",
     };
@@ -127,6 +129,17 @@ useEffect(() => {
               className="w-full border rounded-xl px-4 py-3 outline-none focus:ring-2 focus:ring-amber-500"
             />
           </div>
+          {/* <div className="w-full">
+            <label className="block mb-2 font-medium">
+              Needed Temmumber
+            </label>
+            <input
+              type="number"
+              name="temmumber"
+              placeholder="Temmumber"
+              className="w-full border rounded-xl px-4 py-3 outline-none focus:ring-2 focus:ring-amber-500"
+            />
+          </div> */}
          </div>
 
           {/* Description */}

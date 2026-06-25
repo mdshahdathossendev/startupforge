@@ -1,6 +1,23 @@
 import Sidebar from "@/Component/Sideber";
+import { auth } from "@/lib/auth";
+import { headers } from "next/headers";
+import { redirect } from "next/navigation";
 
-export default function Layout({ children }) {
+export default async function Layout({ children }) {
+  // const session = await auth.api.getSession({
+  //     headers: await headers(),
+  //   });
+  // console.log(session)
+  
+  //   if (!session) {
+  //     redirect("/login");
+  //   }
+  
+    
+  //   if (session.user.status !== "Unblock") {
+  //     redirect("/block");
+  //   }
+  
   return (
     <div className="bg-gray-50">
       

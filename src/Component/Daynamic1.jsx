@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 
 export default function Daynamic1({ startup }) {
+  console.log(startup)
   return (
     <section className="py-24">
       <div className="container mx-auto px-4">
@@ -25,7 +26,7 @@ export default function Daynamic1({ startup }) {
 
         {/* Startup Cards */}
         <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
-          {startup?.slice(0, 6).map((item, index) => (
+          {startup?.map((item, index) => (
             <motion.div
               key={item._id}
               initial={{ opacity: 0, y: 40 }}

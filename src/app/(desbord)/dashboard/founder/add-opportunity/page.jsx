@@ -9,7 +9,8 @@ export default async function CreateOpportunity() {
       });
     
     const email = session?.user?.email;
-    const data = await getDashboardStats(email)
+    const token = session.session.token
+    const data = await getDashboardStats(email, token)
   return (
    <AddOporsontiy data = {data}></AddOporsontiy>
   );

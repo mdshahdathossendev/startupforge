@@ -22,7 +22,7 @@ export function FounderEditFrom({data}) {
               description: formData.get("description"),
               logo: imageUrl,
             };
-           const result = await updateStartup(email, userData);
+              updateStartup(email, userData);
               router.refresh()
         }
       const [imageUrl, setImageUrl] = useState("");
@@ -78,11 +78,11 @@ export function FounderEditFrom({data}) {
     </label>
 
     <input
-      className="border p-3 rounded-lg w-full"
-      type="file"
-      accept="image/*"
-      onChange={handleImageUpload}
-    />
+  className="border p-3 rounded-lg w-full"
+  type="file"
+   accept="image/*"
+  onChange={handleImageUpload}
+/>
 
     {loading && <p>Uploading...</p>}
 

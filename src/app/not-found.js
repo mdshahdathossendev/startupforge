@@ -1,6 +1,12 @@
-import Link from "next/link";
+'use client'
+
+import { Button } from "@heroui/react";
+import { useRouter } from "next/navigation";
+
+
 
 export default function NotFound() {
+  const router = useRouter()
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-slate-50 to-blue-50 px-6">
       <div className="text-center max-w-lg">
@@ -18,12 +24,12 @@ export default function NotFound() {
         </p>
 
         <div className="flex justify-center mt-8">
-          <Link
-            href="/"
+          <Button
+           onClick={()=>{router.push('/')}}
             className="px-6 py-3 bg-blue-600 text-white rounded-xl hover:bg-blue-700 transition"
           >
             Go Home
-          </Link>
+          </Button>
         </div>
 
         <div className="mt-12">

@@ -7,7 +7,10 @@ import React, { useState } from 'react';
 const AddOporsontiy = ({ data }) => {
   const [showToast, setShowToast] = useState(false);
   const router = useRouter();
-
+  if (data?.stats !== "Approved") {
+    alert("Your startup is not approved yet!");
+    return;
+  }
   const onSubmit = async (e) => {
     e.preventDefault();
 

@@ -1,78 +1,104 @@
-import { Pencil, Trash2 } from "lucide-react";
+import { Trash2 } from "lucide-react";
 import { FounderEditFrom } from "./FundeerEditFrom";
 import { deleteStartup } from "@/lib/action";
 import Image from "next/image";
 
-const Startup = ({data}) => {
+const Startup = ({ data }) => {
   const handleDelete = async (email) => {
-    console.log(email)
     const result = await deleteStartup(email);
-  
+
     if (result.deletedCount > 0) {
-      window.location.reload();
       alert("Deleted Successfully");
+      window.location.reload();
     }
   };
-    console.log(data)
+
   return (
-    <div>
+    <div className="max-w-5xl mx-auto">
+      <div className="relative bg-white rounded-3xl border border-gray-100 shadow-lg hover:shadow-xl transition-all duration-300 p-8">
+        
+        {/* Status Badge */}
         <div
-          key={data._id}
-          className="bg-white rounded-2xl shadow-md p-6 max-w-4xl mb-6"
+          className={`absolute top-5 right-5 px-4 py-2 rounded-full text-xs font-bold text-white shadow-md
+            ${
+              data?.stats === "Approved"
+                ? "bg-green-500"
+                : data?.stats === "Pending"
+                ? "bg-yellow-500"
+                : data?.stats === "Rejected"
+                ? "bg-red-500"
+                : "bg-gray-500"
+            }`}
         >
-          <div className="flex flex-col md:flex-row gap-6 items-start">
-            {/* Logo */}
-            <div className="flex justify-center">
-              <Image
-  src={data.logo || "/placeholder.png"}
-  alt={data.startup_name}
-  width={1000}
-  height={1000}
-  className="w-40 h-40 rounded-xl object-cover border"
-/>
-            </div>
+          {data?.stats || "Unknown"}
+        </div>
 
-            {/* Details */}
-            <div className="flex-1 space-y-4">
-              <h2 className="text-3xl font-bold">
-                {data.startup_name}
-              </h2>
+        <div className="flex flex-col lg:flex-row gap-8">
+          
+          {/* Logo */}
+          <div className="flex justify-center">
+            <Image
+              src={data?.logo || "/placeholder.png"}
+              alt={data?.startup_name || "Startup"}
+              width={300}
+              height={300}
+              className="w-44 h-44 rounded-2xl object-cover border shadow-lg"
+            />
+          </div>
 
-              <div>
-                <span className="font-semibold">Industry:</span>{" "}
-                {data.industry}
+          {/* Content */}
+          <div className="flex-1">
+            <h2 className="text-3xl font-bold text-gray-800 mb-6">
+              {data?.startup_name}
+            </h2>
+
+            <div className="grid md:grid-cols-2 gap-4">
+              <div className="bg-gray-50 p-4 rounded-xl">
+                <p className="text-sm text-gray-500">Industry</p>
+                <p className="font-semibold text-gray-800">
+                  {data?.industry}
+                </p>
               </div>
 
-              <div>
-                <span className="font-semibold">Funding Stage:</span>{" "}
-                {data.funding_stage}
+              <div className="bg-gray-50 p-4 rounded-xl">
+                <p className="text-sm text-gray-500">Funding Stage</p>
+                <p className="font-semibold text-gray-800">
+                  {data?.funding_stage}
+                </p>
               </div>
 
-              <div>
-                <span className="font-semibold">Founder Email:</span>{" "}
-                {data.founder_email}
+              <div className="bg-gray-50 p-4 rounded-xl md:col-span-2">
+                <p className="text-sm text-gray-500">Founder Email</p>
+                <p className="font-semibold text-gray-800 break-all">
+                  {data?.founder_email}
+                </p>
               </div>
 
-              <div>
-                <span className="font-semibold">Description:</span>
-                <p className="text-gray-600 mt-1">
-                  {data.description}
+              <div className="bg-gray-50 p-4 rounded-xl md:col-span-2">
+                <p className="text-sm text-gray-500 mb-2">Description</p>
+                <p className="text-gray-700 leading-relaxed">
+                  {data?.description}
                 </p>
               </div>
             </div>
+          </div>
 
-            {/* Right Side Buttons */}
-            <div className="flex md:flex-col gap-3 ml-auto">
-             <FounderEditFrom data={data}></FounderEditFrom>
-
-              <button onClick={()=>handleDelete(data.founder_email)} className="flex items-center gap-2 px-4 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600">
-                <Trash2 size={18} />
-                Delete
-              </button>
+          {/* Action Buttons */}
+          <div className="flex flex-col gap-3 mt-15">
+            <div className="w-full">
+              <FounderEditFrom data={data} />
             </div>
 
+            <button
+              onClick={() => handleDelete(data?.founder_email)}
+              className="w-full flex items-center justify-center gap-2 px-4 py-3 rounded-xl bg-red-500 text-white font-semibold hover:bg-red-600 transition-all"
+            >
+              <Trash2 size={18} />
+              Delete
+            </button>
           </div>
         </div>
+      </div>
     </div>
   );
 };

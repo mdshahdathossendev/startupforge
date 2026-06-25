@@ -1,3 +1,4 @@
+
 import { auth } from "@/lib/auth";
 import { getApplicantByOpportunity } from "@/lib/data";
 import {
@@ -15,10 +16,12 @@ export default async function Overview() {
   });
 
   const id = session?.user?.id;
+  const token = session.session.token
 
-  const applications = await getApplicantByOpportunity(id);
+  const applications = await getApplicantByOpportunity(id, token);
 
   const total = applications.length;
+  console.log(total, applications)
 
   const stats = applications.reduce(
     (acc, item) => {

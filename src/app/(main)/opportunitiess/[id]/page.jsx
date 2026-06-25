@@ -9,7 +9,8 @@ const OpportunityDetailsPage = async ({ params }) => {
     headers: await headers(),
   });
   const idt = session?.user?.id;
-  const data = await getApplicantByOpportunity(idt)
+   const token = session.session.token
+  const data = await getApplicantByOpportunity(idt, token)
   return (
     <div>
        <OporsontiyDetles job = {job} data={data}></OporsontiyDetles>

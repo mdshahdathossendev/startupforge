@@ -1,6 +1,6 @@
 
 export const createOpportunity = async (data) => {
-  const res = await fetch("http://localhost:8080/startups", {
+  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/startups`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -10,7 +10,7 @@ export const createOpportunity = async (data) => {
   return res.json();
 };
 export const addPaymentHistory = async (data) => {
-  const res = await fetch("http://localhost:8080/payment", {
+  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/payment`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -20,7 +20,7 @@ export const addPaymentHistory = async (data) => {
   return res.json();
 };
 export const createStartups = async (data) => {
-  const res = await fetch("http://localhost:8080/opportunities", {
+  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/opportunities`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -30,7 +30,7 @@ export const createStartups = async (data) => {
   return res.json();
 };
 export const createApplication = async (data) => {
-  const res = await fetch("http://localhost:8080/application", {
+  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/application`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -41,7 +41,7 @@ export const createApplication = async (data) => {
 };
 export const updateStartup = async (email, userData) => {
   const res = await fetch(
-    `http://localhost:8080/startups/${email}`,
+    `${process.env.NEXT_PUBLIC_API_URL}/startups/${email}`,
     {
       method: "PUT",
       headers: {
@@ -55,7 +55,7 @@ export const updateStartup = async (email, userData) => {
 };
 export const updateOpportunity = async (id, data) => {
   const res = await fetch(
-    `http://localhost:8080/opportunities/${id}`,
+    `${process.env.NEXT_PUBLIC_API_URL}/opportunities/${id}`,
     {
       method: "PUT",
       headers: {
@@ -69,7 +69,7 @@ export const updateOpportunity = async (id, data) => {
 };
 export const deleteOpportunity = async (id) => {
   const res = await fetch(
-    `http://localhost:8080/opportunities/${id}`,
+    `${process.env.NEXT_PUBLIC_API_URL}/opportunities/${id}`,
     {
       method: "DELETE",
     }
@@ -79,7 +79,7 @@ export const deleteOpportunity = async (id) => {
 };
 export const deleteStartup = async (email) => {
   const res = await fetch(
-    `http://localhost:8080/startups/${email}`,
+    `${process.env.NEXT_PUBLIC_API_URL}/startups/${email}`,
     {
       method: "DELETE",
     }
@@ -89,7 +89,7 @@ export const deleteStartup = async (email) => {
 };
 export const updateApplication = async (id, data) => {
   const res = await fetch(
-    `http://localhost:8080/application/query/${id}`,
+    `${process.env.NEXT_PUBLIC_API_URL}/application/query/${id}`,
     {
       method: "PUT",
       headers: {
@@ -102,7 +102,7 @@ export const updateApplication = async (id, data) => {
   return res.json();
 };
 export const updateProfile = async (id, data) => {
-  const res = await fetch(`http://localhost:8080/user/${id}`, {
+  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/user/${id}`, {
     method: "PUT",
     headers: {
       "Content-Type": "application/json",
@@ -112,7 +112,7 @@ export const updateProfile = async (id, data) => {
   return res.json();
 };
 export const updateStartupData = async (id, data) => {
-  const res = await fetch(`http://localhost:8080/startups/query/${id}`, {
+  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/startups/query/${id}`, {
     method: "PUT",
     headers: {
       "Content-Type": "application/json",
@@ -124,11 +124,11 @@ export const updateStartupData = async (id, data) => {
 };
 export const deleteStartupData = async (id) => {
   const res = await fetch(
-    `http://localhost:8080/startups/query/${id}`,
+    `${process.env.NEXT_PUBLIC_API_URL}/startups/query/${id}`,
     {
       method: "DELETE",
     }
   );
 
-  return res.json();
+  return res.json();  
 };
