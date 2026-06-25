@@ -7,7 +7,7 @@ async function getUserRole() {
     headers: await headers(),
   });
 
-  return session?.user?.role || null;
+  return session?.user?.role;
 }
 
 export default async function DashboardPage() {

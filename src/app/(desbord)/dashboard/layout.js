@@ -1,8 +1,4 @@
 import Sidebar from "@/Component/Sideber";
-import { auth } from "@/lib/auth";
-import { headers } from "next/headers";
-import { redirect } from "next/navigation";
-
 export default async function Layout({ children }) {
   return (
     <div className="bg-gray-50">
