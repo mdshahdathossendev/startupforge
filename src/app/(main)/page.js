@@ -3,17 +3,11 @@ import Daynamic1 from '@/Component/Daynamic1';
 import Dynamic2 from '@/Component/Dynamic2';
 import Hero from '@/Component/Hero';
 import StartupStatistics from '@/Component/StartupStatistics';
-import { auth } from '@/lib/auth';
 import { getOpportunities, getStats } from '@/lib/data';
-import { headers } from 'next/headers';
 import React from 'react';
 
 const page = async() => {
-  const session = await auth.api.getSession({
-      headers: await headers(),
-    });
-    const token = session.session.token
- const startup = await getStats(token)
+ const startup = await getStats()
  const opportunities = await getOpportunities()
   return (
     <div>
