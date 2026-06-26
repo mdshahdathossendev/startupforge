@@ -74,7 +74,7 @@ const handleGoogleLogin = async () => {
   });
 }
     return (
-  <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-indigo-50 via-white to-purple-50 p-4">
+  <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-indigo-51 via-white to-purple-50 p-4">
 
     {/* CARD */}
     <div className="w-full max-w-md bg-white/70 backdrop-blur-xl border border-gray-200 shadow-2xl rounded-2xl p-6">
