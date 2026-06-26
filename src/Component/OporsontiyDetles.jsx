@@ -3,7 +3,7 @@ import React from 'react';
 import { Calendar} from "lucide-react";
 import { authClient } from '@/lib/auth-client';
 import { createApplication } from '@/lib/action';
-import { useRouter } from 'next/navigation';
+import { redirect, useRouter } from 'next/navigation';
 import toast from 'react-hot-toast';
 const OporsontiyDetles = ({job, data}) => {
   const router = useRouter()
@@ -42,19 +42,8 @@ const OporsontiyDetles = ({job, data}) => {
     };
   
    createApplication(userData);
-  
-  toast.success("Application Submitted Successfully!", {
-  duration: 4000,
-  position: "top-right",
-  style: {
-    background: "#111827",
-    color: "#fff",
-    border: "1px solid #22c55e",
-    borderRadius: "12px",
-    padding: "16px",
-  },
-  icon: "🚀",
-});
+  redirect('/succes')
+
 router.refresh()
     }
     return (

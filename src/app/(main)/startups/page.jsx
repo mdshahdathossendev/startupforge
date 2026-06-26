@@ -6,20 +6,6 @@ import { redirect } from 'next/navigation';
 import React from 'react';
 
 const page = async() => {
-    const session = await auth.api.getSession({
-            headers: await headers(),
-          });
-        
-          if (!session || !session.user) {
-            redirect("/login");
-          }
-        
-          const userStatus = session.user.status; 
-        
-          if (userStatus !== "Unblock") {
-           
-            redirect("/block"); 
-          }
     const data = await getStats()
     return (
         <div>
