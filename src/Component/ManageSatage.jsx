@@ -1,6 +1,6 @@
 'use client'
 import { deleteStartupData, updateStartupData } from '@/lib/action';
-import { Table } from '@heroui/react';
+import { Button, Table } from '@heroui/react';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import React from 'react';
@@ -41,7 +41,7 @@ const ManageSatage = ({data}) => {
         </Table.Cell>
                      <Table.Cell>
           <div className="flex gap-2">
-            <button
+            <Button
            onClick={() => {
      updateStartupData(items._id, "Approved");
   router.refresh();
@@ -49,7 +49,7 @@ const ManageSatage = ({data}) => {
               className="px-3 py-1 bg-green-500 text-white rounded-md hover:bg-green-600"
             >
               Approved
-            </button>
+            </Button>
         
             <button
              onClick={()=> {deleteStartupData(items._id); router.refresh()}}
