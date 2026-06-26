@@ -20,7 +20,7 @@ const OporsontiyDetles = ({job, data}) => {
      const limit = planLimits[session?.user?.plan]
  
      if(data.length >= limit){
-      router.push('/payment')
+      redirect('/payment')
      }
   
      if (session?.user?.role !== "Collaborator") {
@@ -42,9 +42,10 @@ const OporsontiyDetles = ({job, data}) => {
     };
   
    createApplication(userData);
-  redirect('/succes')
+   router.refresh()
+   redirect('/succes')
+  
 
-router.refresh()
     }
     return (
         <div className="min-h-screen bg-gray-50 py-10 px-4">
