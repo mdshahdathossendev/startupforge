@@ -35,9 +35,16 @@ export const getDetlesOpportunities = async (id) => {
   const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/opportunities/${id}`) 
   return res.json();
 };
+
 export const getOpportunities = async (page) => {
   const res = await fetch(
     `${process.env.NEXT_PUBLIC_API_URL}/opportunities?page=${page}`
+  );
+  return res.json();
+};
+export const getOpportunitiestotel = async () => {
+  const res = await fetch(
+    `${process.env.NEXT_PUBLIC_API_URL}/opportunities`
   );
   return res.json();
 };

@@ -8,7 +8,7 @@ import { useState } from "react";
 const sinupPage = () => {
   const [imageUrl, setImageUrl] = useState("");
   const [loading, setLoading] = useState(false);
-  const [role, setRole] = useState("Founder");
+  const [role, setRole] = useState("Collaborator");
   const searchParams = useSearchParams();
    const redirect = searchParams.get("redirect");
   const router = useRouter()
@@ -161,31 +161,35 @@ const handleGoogleLogin = async () => {
         </div>
 
         {/* ROLE SELECT */}
-        <div className="grid grid-cols-2 gap-3">
-          <button
-            type="button"
-            onClick={() => setRole("Founder")}
-            className={`p-3 rounded-xl border transition font-medium ${
-              role === "Founder"
-                ? "bg-indigo-600 text-white shadow-md"
-                : "bg-white hover:bg-gray-50"
-            }`}
-          >
-            🚀 Founder
-          </button>
+       {/* আপনার স্টেটের লাইনে এটি নিশ্চিত করুন: const [role, setRole] = useState("Collaborator"); */}
 
-          <button
-            type="button"
-            onClick={() => setRole("Collaborator")}
-            className={`p-3 rounded-xl border transition font-medium ${
-              role === "Collaborator"
-                ? "bg-indigo-600 text-white shadow-md"
-                : "bg-white hover:bg-gray-50"
-            }`}
-          >
-            🤝 Collaborator
-          </button>
-        </div>
+<div className="grid grid-cols-2 gap-3">
+  {/* Founder Button */}
+  <button
+    type="button"
+    onClick={() => setRole("Founder")}
+    className={`p-3 rounded-xl border transition font-medium ${
+      role === "Founder"
+        ? "bg-indigo-600 text-white shadow-md border-indigo-600"
+        : "bg-white hover:bg-gray-50 border-gray-200 text-gray-700"
+    }`}
+  >
+    🚀 Founder
+  </button>
+
+  {/* Collaborator Button */}
+  <button
+    type="button"
+    onClick={() => setRole("Collaborator")}
+    className={`p-3 rounded-xl border transition font-medium ${
+      role === "Collaborator"
+        ? "bg-indigo-600 text-white shadow-md border-indigo-600"
+        : "bg-white hover:bg-gray-50 border-gray-200 text-gray-700"
+    }`}
+  >
+    🤝 Collaborator
+  </button>
+</div>
 
         <input type="hidden" name="role" value={role} />
 
