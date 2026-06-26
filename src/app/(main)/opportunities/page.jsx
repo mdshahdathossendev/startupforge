@@ -6,20 +6,20 @@ import { redirect } from 'next/navigation';
 import React from 'react';
 
 const page = async({ searchParams }) => {
-    const session = await auth.api.getSession({
-        headers: await headers(),
-      });
+    // const session = await auth.api.getSession({
+    //     headers: await headers(),
+    //   });
     
-      if (!session || !session.user) {
-        redirect("/login");
-      }
+    //   if (!session || !session.user) {
+    //     redirect("/login");
+    //   }
     
-      const userStatus = session.user.status; 
+    //   const userStatus = session.user.status; 
     
-      if (userStatus !== "Unblock") {
+    //   if (userStatus !== "Unblock") {
        
-        redirect("/block"); 
-      }
+    //     redirect("/block"); 
+    //   }
     const params = await searchParams;
     const data = await getOpportunities(params.page)
     return (
