@@ -22,6 +22,6 @@ export const config = {
   matcher: [
     "/dashboard/:path*",
     "/detlas/:path*",
-    "/opportunities"
+    "/opportunitiess/:path*"
   ],
 };
